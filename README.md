@@ -1,2 +1,23 @@
 # pottersite-home-server
-Repository of my home server components
+This is the repo of my home server components.
+
+Servers
+
+Environments
+
+Architecture
+
+Applications
+
+Docker
+
+Jenkins
+
+Ansible
+
+Portainer
+
+Jellyfin
+
+
+
