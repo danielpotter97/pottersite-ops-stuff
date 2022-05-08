@@ -1,0 +1,8 @@
+[pve]
+192.168.0.20
+[jenkins]
+192.168.0.21
+[dummy]
+192.168.0.22
+[docker-swarm-leader]
+[docker-swarm-workers]
