@@ -1,6 +1,6 @@
 ---
 - name: Install docker in Rocky
-  hosts: dummy
+  hosts: localhost
   gather_facts: false
   become: true
   tasks:
