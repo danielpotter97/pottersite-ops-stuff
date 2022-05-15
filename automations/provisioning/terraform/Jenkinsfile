@@ -6,14 +6,14 @@ pipeline {
     stages {
        stage('Git checkout') {
            steps{
+               cleanWs()
                checkout scm
             }
         }
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
-                sh 'terraform fmt'
-                sh 'ls -ltra'
+                sh 'cd automations/provisioning/terraform && terraform fmt'
             }
         }
         stage('terraform Init') {
@@ -24,8 +24,7 @@ pipeline {
         }
         stage('terraform apply') {
             steps{
-                sh 'terraform apply --auto-approve'
-                sh 'ls -ltra'
+                sh 'cd automations/provisioning/terraform && terraform apply --auto-approve'
             }
         }
         stage('cleanup') {
