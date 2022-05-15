@@ -34,11 +34,13 @@
             name: docker
             state: started
             enabled: yes
+
         - name: Add remote user to "docker" group
           user:
-            name: your server login user
+            name: potteradmin
             groups: "docker"
             append: yes                
+        
           handlers:
            - name: restart docker
              service: 
