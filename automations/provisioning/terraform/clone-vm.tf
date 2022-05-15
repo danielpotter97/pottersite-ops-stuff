@@ -27,6 +27,18 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM Memory Settings
     memory = 8192
 
+    scsihw            = "virtio-scsi-pci"
+    bootdisk          = "scsi0"
+    disk {
+    id              = 0
+    size            = 32
+    type            = "scsi"
+    storage         = "local-lvm"
+    storage_type    = "lvm"
+    iothread        = true
+    }
+    boot = "order=scsi0;net0
+
     # VM Network Settings
     network {
         bridge = "vmbr0"
@@ -39,11 +51,6 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # (Optional) IP Address and Gateway
     ipconfig0 = "ip=192.168.0.23/24,gw=192.168.0.1"
     nameserver = "192.168.0.1"
-    # (Optional) Default User
-    # ciuser = "your-username"
-    
-    # (Optional) Add your SSH KEY
-    # sshkeys = <<EOF
-    # #YOUR-PUBLIC-SSH-KEY
-    # EOF
+ 
+ 
 }
