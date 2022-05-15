@@ -5,7 +5,7 @@
 resource "proxmox_vm_qemu" "pottersite-docker01" {
     
     #VM general settings
-    target_node = "proxmox"
+    target_node = "pve"
     vmid = "103"
     name = "pottersite-docker01"
     desc = "Swarm Cluster Manager Node"
