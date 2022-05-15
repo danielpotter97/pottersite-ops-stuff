@@ -13,6 +13,8 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     timeouts {
     create = "2h"
     delete = "2h"
+        }
+    }
 
     # VM Advanced General Settings
     onboot = true 
