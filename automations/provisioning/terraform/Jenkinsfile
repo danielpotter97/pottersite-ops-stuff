@@ -21,9 +21,17 @@ pipeline {
                 sh 'cd automations/provisioning/terraform && terraform init'
             }
         }
+
+        stage('terraform plan') {
+            steps{
+                sh 'cd automations/provisioning/terraform && terraform plan -no-color -out=plan.out'
+            }
+        }
+
         stage('terraform apply') {
             steps{
                 sh 'cd automations/provisioning/terraform && timeout 1h terraform apply -var-file="credentials.tfvars" --auto-approve'
+                sh "terraform output"
             }
         }
         stage('cleanup') {
