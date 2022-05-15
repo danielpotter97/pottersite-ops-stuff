@@ -34,7 +34,6 @@
             name: docker
             state: started
             enabled: yes
-
         - name: Add remote user to "docker" group
           user:
             name: potteradmin
