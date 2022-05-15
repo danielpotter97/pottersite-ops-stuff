@@ -10,6 +10,11 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     name = "pottersite-docker01"
     desc = "Swarm Cluster Manager Node"
 
+    timeouts {
+    create = "60m"
+    delete = "2h"
+    }
+    
     # VM Advanced General Settings
     onboot = true 
 
