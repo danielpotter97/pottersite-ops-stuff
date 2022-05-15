@@ -11,7 +11,7 @@ pipeline {
         }
         stage('terraform format check') {
             steps{
-                PATH=/bin/terraform
+                sh "PATH=/bin/terraform"
                 sh 'terraform fmt'
             }
         }
