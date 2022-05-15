@@ -9,7 +9,7 @@ terraform {
     required_providers {
         proxmox = {
             source = "telmate/proxmox"
-            version = "2.8.0
+            version = "2.7.4"
         }
     }
 }
@@ -32,7 +32,6 @@ provider "proxmox" {
     pm_api_token_id = var.proxmox_api_token_id
     pm_api_token_secret = var.proxmox_api_token_secret
     pm_timeout = 1800
-
     # (Optional) Skip TLS Verification
     # pm_tls_insecure = true
 
