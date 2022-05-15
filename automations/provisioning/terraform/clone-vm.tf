@@ -37,9 +37,9 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     storage_type    = "lvm"
     iothread        = true
     }
-    boot = "order=scsi0;net0
 
-    # VM Network Settings
+    boot = "order=scsi0;net0"
+
     network {
         bridge = "vmbr0"
         model  = "virtio"
@@ -47,9 +47,9 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     # VM Cloud-Init Settings
     os_type = "cloud-init"
-
-    # (Optional) IP Address and Gateway
+    
     ipconfig0 = "ip=192.168.0.23/24,gw=192.168.0.1"
+
     nameserver = "192.168.0.1"
  
  
