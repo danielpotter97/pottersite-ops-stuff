@@ -19,18 +19,16 @@ pipeline {
         stage('terraform Init') {
             steps{
                 sh 'cd automations/provisioning/terraform && terraform init'
-                sh 'ls -ltra'
             }
         }
         stage('terraform apply') {
             steps{
-                sh 'cd automations/provisioning/terraform && terraform apply --auto-approve'
+                sh 'cd automations/provisioning/terraform && terraform apply -var-file="credentials.tfvars" --auto-approve'
             }
         }
         stage('cleanup') {
             steps{
-             
-              sh 'rm -rf automations'
+              cleanWs()
             }
         }
     }
