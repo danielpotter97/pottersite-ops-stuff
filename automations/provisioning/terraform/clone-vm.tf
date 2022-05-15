@@ -29,14 +29,6 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     scsihw            = "virtio-scsi-pci"
     bootdisk          = "scsi0"
-    disk {
-    id              = 0
-    size            = 32
-    type            = "scsi"
-    storage         = "local-lvm"
-    storage_type    = "lvm"
-    iothread        = true
-    }
 
     boot = "order=scsi0;net0"
 
