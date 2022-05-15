@@ -23,7 +23,7 @@ pipeline {
         }
         stage('terraform apply') {
             steps{
-                sh 'cd automations/provisioning/terraform && terraform apply -var-file="credentials.tfvars" --auto-approve'
+                sh 'cd automations/provisioning/terraform && timeout 1h terraform apply -var-file="credentials.tfvars" --auto-approve'
             }
         }
         stage('cleanup') {
