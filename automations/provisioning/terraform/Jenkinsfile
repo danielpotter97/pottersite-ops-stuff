@@ -13,16 +13,19 @@ pipeline {
             steps{
                 sh "PATH=/bin/terraform"
                 sh 'terraform fmt'
+                sh 'ls -ltra'
             }
         }
         stage('terraform Init') {
             steps{
                 sh 'terraform init'
+                sh 'ls -ltra'
             }
         }
         stage('terraform apply') {
             steps{
                 sh 'terraform apply --auto-approve'
+                sh 'ls -ltra'
             }
         }
         stage('cleanup') {
