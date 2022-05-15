@@ -1,68 +1,53 @@
 - hosts: all
-  become: yes
-  gather_facts: false
-  tasks:
-  - name: Install docker packages
-    remote_user: root
-    apt:
-      name: "{{ item }}"
-      state: present
-      update_cache: yes
-    with_items:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-    tags:
-      - docker
-  - name: Add Docker s official GPG key
-    remote_user: root
-    apt_key:
-      url: https://download.docker.com/linux/root/gpg
-      state: present
-    tags:
-      - docker
-  - name: Verify that we have the key with the fingerprint
-    remote_user: root
-    apt_key:
-      id: 0EBFCD88
-      state: present
-    tags:
-      - docker
-  - name: Set up the stable repository
-    remote_user: root
-    apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/root xenial stable
-      state: present
-      update_cache: yes
-    tags:
-      - docker
-  - name: Update apt packages
-    remote_user: root
-    apt:
-      update_cache: yes
-    tags:
-      - docker
-  - name: Install docker
-    remote_user: root
-    apt:
-      name: docker-ce
-      state: present
-      update_cache: yes
-    #notify: Start docker on boot
-    tags:
-      - docker
-  - name: Add remote "root" user to "docker" group
-    remote_user: root
-    user:
-      name: "potteradmin"
-      group: "docker"
-      append: yes
-    tags:
-      - docker
-  - name: Install docker-compose
-    remote_user: root
-    get_url: 
-      url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
-      dest: /usr/local/bin/docker-compose
-      mode: 'u+x,g+x'
+      become: true
+      tasks:
+        - name: install dependencies
+          apt:
+            name: "{{item}}"
+            state: present
+            update_cache: yes
+          loop:
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - software-properties-common
+        - name: add GPG key
+          apt_key:
+            url: https://download.docker.com/linux/debian/gpg
+            state: present
+        - name: add docker repository
+          apt_repository:
+            repo: deb https://download.docker.com/linux/debian bullseye stable
+            state: present
+        - name: install docker
+          apt:
+            name: "{{item}}"
+            state: latest
+            update_cache: yes
+          loop:
+            - docker-ce
+            - docker-ce-cli
+            - containerd.io
+        - name: make sure docker is active
+          service:
+            name: docker
+            state: started
+            enabled: yes
+        - name: Add remote user to "docker" group
+          user:
+            name: your server login user
+            groups: "docker"
+            append: yes    
+            
+      handlers:
+        - name: restart docker
+          service: 
+            name: docker 
+            state: restarted
+
+ - name: Install docker-compose
+      get_url: 
+        url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: '+x'
