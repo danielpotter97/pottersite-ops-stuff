@@ -6,9 +6,9 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     
     #VM general settings
     target_node = "proxmox"
-    vmid = "102"
+    vmid = "103"
     name = "pottersite-docker01"
-    desc = "Description"
+    desc = "Swarm Cluster Manager Node"
 
     # VM Advanced General Settings
     onboot = true 

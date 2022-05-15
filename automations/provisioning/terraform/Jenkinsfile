@@ -18,8 +18,7 @@ pipeline {
         }
         stage('terraform Init') {
             steps{
-                sh 'cd automations/provisioning/terraform'
-                sh 'terraform init'
+                sh 'cd automations/provisioning/terraform && terraform init'
                 sh 'ls -ltra'
             }
         }
