@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+   
+    stages {
+       stage('Git checkout') {
+           steps{
+               cleanWs()
+               checkout scm
+               sh 'scp -r -v -o StrictHostKeyChecking=no automations root@192.168.0.22:/home'
+            }
+        }
+
+        stage('Validate packer file') {
+            steps{
+                sh """ssh -tt root@192.168.0.20 << EOF 
+                cd /home/automations/provisioning/packer && packer validate -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
+                EOF"""
+                
+            }
+        }
+
+        stage('Build packer file') {
+            steps{
+                sh """ssh -tt root@192.168.0.20 << EOF 
+                cd /home/automations/provisioning/packer && packer build -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
+                EOF"""
+            }
+        }
+
+        stage('cleanup') {
+            steps{
+              cleanWs()
+            }
+        }
+    }
+
+        
+}
