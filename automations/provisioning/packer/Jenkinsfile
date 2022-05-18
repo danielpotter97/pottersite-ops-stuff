@@ -6,7 +6,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
-               sh 'scp -r -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null automations root@192.168.0.22:/home'
+               sh 'scp -r -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null automations root@192.168.0.20:/home'
             }
         }
 
