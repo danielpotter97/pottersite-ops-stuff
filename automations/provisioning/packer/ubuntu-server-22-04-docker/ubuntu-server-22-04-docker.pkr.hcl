@@ -83,7 +83,6 @@ source "proxmox" "pottersite-template01" {
         "<f10><wait>"
     ]
     boot = "c"
-    boot_wait = "5s"
 
     boot_wait = "5s"
 
