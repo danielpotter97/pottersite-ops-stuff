@@ -96,7 +96,7 @@ source "proxmox" "pottersite-template01" {
         "<enter><f10><wait>"
     ]
     boot = "c"
-    boot_wait = "5s"
+    boot_wait = "3s"
 
     # PACKER Autoinstall Settings
     http_directory = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/http/" 
