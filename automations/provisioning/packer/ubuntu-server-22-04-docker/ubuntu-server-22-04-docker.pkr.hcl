@@ -75,14 +75,26 @@ source "proxmox" "pottersite-template01" {
 
     # PACKER Boot Commands
     boot_command = [
-    "c<wait>",
-    "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"",
-    "<enter><wait>",
-    "initrd /casper/initrd",
-    "<enter><wait>",
-    "boot",
-    "<enter>"
-    ]
+        "<esc><esc><esc><esc>e<wait>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "<del><del><del><del><del><del><del><del>",
+        "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"<enter><wait>",
+        "initrd /casper/initrd<enter><wait>",
+        "boot<enter>",
+        "<enter><f10><wait>"
+      ],
     boot = "c"
     boot_wait = "5s"
 
