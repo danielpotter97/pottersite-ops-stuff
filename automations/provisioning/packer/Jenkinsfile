@@ -13,7 +13,7 @@ pipeline {
         stage('Validate packer file') {
             steps{
                 sshagent(credentials : ['root']) {
-                    packer validate -var-file='/home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl'
+                    packer validate -var-file="/home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl"
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('Build packer file') {
             steps{
                 sshagent(credentials : ['root']) {
-                packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' '/home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl'
+                packer build -var-file="/home/automations/provisioning/packer/credentials.pkr.hcl" "/home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl"
                 }
             }
         }
