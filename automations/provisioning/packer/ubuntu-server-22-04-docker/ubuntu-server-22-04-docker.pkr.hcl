@@ -75,12 +75,15 @@ source "proxmox" "pottersite-template01" {
 
     # PACKER Boot Commands
     boot_command = [
-        "e<wait>",
-        "<down><down><down><end>",
-        "<bs><bs><bs><bs><wait>",
-        "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
-        "<f10><wait>"
+    "c<wait>",
+    "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net\"",
+    "<enter><wait>",
+    "initrd /casper/initrd",
+    "<enter><wait>",
+    "boot",
+    "<enter>"
     ]
+    
     boot_wait = "5s"
 
     # PACKER Autoinstall Settings
