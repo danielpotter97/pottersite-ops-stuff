@@ -30,4 +30,4 @@ autoinstall:
         # passwd: your-password
         # - or -
         ssh_authorized_keys:
-          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD7I9YvPy48/inMCIgT+2RTHGX0eqxDtL5wv4ATu0i8ZAVh3ku6tdAjrp1CVIu0FI7weWfMjumSnie9ox/ZtlsCPWJ10B1aZJT//+BnJc3oKE0fv1TQckNg/v5PpoE0Slc1YzQLk0GBEMfWrB1U9VUWyt1V29Sv50yuwYZahkRrevd6mgNAmtKoA5xVdKsJAFiXGTMzZtgdfEzgy7wYffzKFIqcFc890Ng1GmfubWnmlw4GL1Qmgfta5wStbUIr4uwdQNZhU/oiB4n/skyyrj4q7jM+G8pm1ieBvttgVpY0WUmyltFwn90DUgz1bSCONKP0aFywrYW/rIGZ4wgsygTjdDZ2NrX9luHK0uwGQD4Hm1uete30HH8T0b1/1Zanp7+AcsEE2g6NP14RwW0Y2o2bhamig02AWNhptaLfAgXYW+QFNXtjysBO8xY6IF88ffMJEPWPZhabJzNH2db7CLvclqfUoXXrxezUv4F6DkjxsC82fSgW9zFtGBpxNWuL8Qc= root@jenkins01.pottersite.local
+          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAOJ+2VHjYuCj/PHPVawIqsYQYX37lDSUAyp7XD9DqMR8sZx/2/A1VK+ZIi7/Txy9X2UkQZ1li9Ll2Av/its6w08s054NGmBTGKVbLKsROdlDBCkVIaxfYb9gr90P/sKnKZG+IVBBk7fiSH/0Uq0EZ1gPD9mHU2MrXs9seCYLx7bSjhB+xm4+xW37DxQc5XMtZL2ATx/Tc6qk1equdfd9BcBOAgVvc8moBMRwXryYCt5uuwXvPvAJtUlcpHwqSABlgMdVPEGvvAM5L/MHkCfQxY9mXsKEv/E50ZMOG3KH14p3mQM2e2hWCB4BRPPGh5XCYWUx1BlL84SOnPDOgPamb root@pve
