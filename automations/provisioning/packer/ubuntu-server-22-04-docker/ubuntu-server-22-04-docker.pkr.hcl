@@ -73,7 +73,7 @@ source "proxmox" "pottersite-template01" {
     cloud_init = true
     cloud_init_storage_pool = "local-lvm"
     
-    communicator = "none"
+    
     # PACKER Boot Commands
     boot_command = [
         "<esc><wait>",
