@@ -127,7 +127,7 @@ build {
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
-        source = "/home/automations/provisioning/packer/files/99-pve.cfg"
+        source = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/files/99-pve.cfg"
         destination = "/tmp/99-pve.cfg"
     }
 
