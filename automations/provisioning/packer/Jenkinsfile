@@ -13,7 +13,7 @@ pipeline {
         stage('Validate packer file') {
             steps{
                 sh """ssh -tt root@192.168.0.20 <<-'EOF' 
-                cd /home/automations/provisioning/packer && packer validate -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
+                packer validate -var-file='/home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
                 EOF"""
                 
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Build packer file') {
             steps{
                 sh """ssh -tt root@192.168.0.20 <<-'EOF' 
-                cd /home/automations/provisioning/packer && packer build -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
+                packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22_04_docker/ubuntu-server-22_04_docker.pkr.hcl
                 EOF"""
             }
         }
