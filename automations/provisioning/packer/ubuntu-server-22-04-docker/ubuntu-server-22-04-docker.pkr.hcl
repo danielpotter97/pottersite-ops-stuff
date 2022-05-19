@@ -75,14 +75,13 @@ source "proxmox" "pottersite-template01" {
 
     # PACKER Boot Commands
     boot_command = [
-        "c<esc><wait>",
         "e<wait>",
         "<down><down><down><end>",
         "<bs><bs><bs><bs><wait>",
         "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
         "<f10><wait>"
     ]
-  
+    boot_wait = "5s"
 
     # PACKER Autoinstall Settings
     http_directory = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/http/" 
