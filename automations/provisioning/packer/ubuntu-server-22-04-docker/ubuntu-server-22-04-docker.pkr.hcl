@@ -83,13 +83,13 @@ source "proxmox" "pottersite-template01" {
     "boot",
     "<enter>"
     ]
-    
+
     boot_wait = "5s"
 
     # PACKER Autoinstall Settings
     http_directory = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/http/" 
     # (Optional) Bind IP Address and Port
-     http_bind_address = "192.168.0.22"
+     http_bind_address = "192.168.0.20"
      http_port_min = 8802
      http_port_max = 8802
 
