@@ -14,7 +14,7 @@ pipeline {
             steps{
                 sshagent(credentials : ['root']) {
                     sh """
-                    ssh root@192.168.0.20 packer validate -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
+                    ssh root@192.168.0.20 packer validate -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl
                     """
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
             steps{
                 sshagent(credentials : ['root']) {
                 sh """
-                sh root@192.168.0.20 packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
+                sh root@192.168.0.20 packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl
                 """
                 }
             }
