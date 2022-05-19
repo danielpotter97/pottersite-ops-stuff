@@ -75,28 +75,12 @@ source "proxmox" "pottersite-template01" {
 
     # PACKER Boot Commands
     boot_command = [
-        "<esc><esc><esc><esc>e<wait>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "<del><del><del><del><del><del><del><del>",
-        "linux /casper/vmlinuz --- autoinstall ds=\"nocloud-net;seedfrom=http://{{.HTTPIP}}:{{.HTTPPort}}/\"<enter><wait>",
-        "initrd /casper/initrd<enter><wait>",
-        "boot<enter>",
-        "<enter><f10><wait>"
+         "e<down><down><down><end>",
+        " autoinstall ds=nocloud;",
+        "<F10>",
     ]
     boot = "c"
-    boot_wait = "3s"
+    boot_wait = "5s"
 
     # PACKER Autoinstall Settings
     http_directory = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/http/" 
