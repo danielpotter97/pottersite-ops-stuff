@@ -5,7 +5,7 @@ pipeline {
        stage('Git checkout') {
            steps{
                cleanWs()
-               checkout scm
+               checkout scm && sh 'pwd'
             }
         }
 
