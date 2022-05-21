@@ -6,19 +6,20 @@ pipeline {
            steps{
                cleanWs()
                checkout scm 
+               sh 'cp -R ${WORKSPACE}/automations /home'
             }
         }
 
         stage('Validate packer file') {
             steps{
-                sh "packer validate -var-file='${WORKSPACE}/automations/provisioning/packer/credentials.pkr.hcl' ${WORKSPACE}/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
+                sh "packer validate -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
             }
         }
 
         stage('Build packer file') {
             steps{
                 
-                sh "packer build -var-file='${WORKSPACE}/automations/provisioning/packer/credentials.pkr.hcl' ${WORKSPACE}/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
+                sh "packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
             }
         }
 
