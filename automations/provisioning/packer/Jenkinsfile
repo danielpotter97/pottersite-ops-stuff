@@ -12,7 +12,7 @@ pipeline {
 
         stage('Validate packer file') {
             steps{
-                sh "packer validate -var-file='home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
+                sh "packer validate -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
             }
         }
 
