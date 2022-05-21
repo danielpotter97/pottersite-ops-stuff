@@ -149,4 +149,12 @@ build {
             "sudo apt-get install -y docker-ce docker-ce-cli containerd.io"
         ]
     }
+    # Provisioning ansible
+    provisioner "shell" {
+        inline = [
+            "sudo apt install software-properties-common"
+            "sudo add-apt-repository --yes --update ppa:ansible/ansible"
+            "sudo apt install ansible"
+        ]
+    }
 }
