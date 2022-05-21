@@ -6,7 +6,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm 
-               sh 'cp -R ${WORKSPACE}/automations /home'
+               sh 'sudo cp -R ${WORKSPACE}/automations /home'
             }
         }
 
