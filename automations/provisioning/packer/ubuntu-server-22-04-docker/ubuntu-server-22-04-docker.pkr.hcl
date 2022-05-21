@@ -95,11 +95,6 @@ source "proxmox" "pottersite-template01" {
     #http_port_min = 8802
     #http_port_max = 8802
 
-    #http_bind_address = "192.168.0.22"
-    # http_port_min = 8802
-    # http_port_max = 8802
-
-
     ssh_username = "potteradmin"
 
     # (Option 1) Add your Password here
