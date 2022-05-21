@@ -6,27 +6,19 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
-               sh 'scp -r -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null automations root@192.168.0.20:/home'
             }
         }
 
         stage('Validate packer file') {
             steps{
-                sshagent(credentials : ['root']) {
-                    sh """
-                    ssh root@192.168.0.20 packer validate -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl
-                    """
-                }
+                sh "packer validate -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
             }
         }
 
         stage('Build packer file') {
             steps{
-                sshagent(credentials : ['root']) {
-                sh """
-                sh ssh root@192.168.0.20 packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl
-                """
-                }
+                
+                sh "packer build -var-file='/home/automations/provisioning/packer/credentials.pkr.hcl' /home/automations/provisioning/packer/ubuntu-server-22-04-docker/ubuntu-server-22-04-docker.pkr.hcl"
             }
         }
 
