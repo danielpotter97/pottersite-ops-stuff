@@ -17,7 +17,7 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox" "ubuntu-server-focal-docker" {
+source "proxmox" "proxmox" "pottersite-template01" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
