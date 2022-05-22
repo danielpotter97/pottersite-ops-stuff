@@ -78,7 +78,7 @@ source "proxmox" "pottersite-template01" {
     boot_command = [
         "<esc><wait>",
         "e<wait>",
-        "<down><down><end>",
+        "<down><down><down><end>",
         "<bs><bs><bs><bs><wait>",
         "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
         "<f10><wait>"
