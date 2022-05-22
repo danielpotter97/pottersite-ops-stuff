@@ -92,8 +92,8 @@ source "proxmox" "pottersite-template01" {
     # (Optional) Bind IP Address and Port
 
     http_bind_address = "192.168.0.21"
-    http_port_min = 8802
-    http_port_max = 8802
+    #http_port_min = 8802
+    #http_port_max = 8802
 
     ssh_username = "ubuntu"
 
