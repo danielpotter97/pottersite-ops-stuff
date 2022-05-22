@@ -104,8 +104,7 @@ source "proxmox" "pottersite-template01" {
     ssh_private_key_file = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
-    ssh_timeout = "30m"
-    ssh_handshake_attempts = "300"
+    ssh_timeout = "20m"
 }
 
 # Build Definition to create the VM Template
