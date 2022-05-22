@@ -34,7 +34,7 @@ source "proxmox" "pottersite-template01" {
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    iso_file = "local:iso/ubuntu-20.04-live-server-amd64.iso"
+    iso_file = "local:iso/ubuntu-20.04-4-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
     #iso_url = "https://releases.ubuntu.com/20.04/ubuntu-20.04.3-live-server-amd64.iso"
