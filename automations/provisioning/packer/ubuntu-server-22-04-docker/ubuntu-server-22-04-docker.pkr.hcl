@@ -101,7 +101,7 @@ source "proxmox" "pottersite-template01" {
     # ssh_password = "your-password"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-     ssh_private_key_file = "~/.ssh/id_rsa"
+     ssh_private_key_file = "/home/potteradmin/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
