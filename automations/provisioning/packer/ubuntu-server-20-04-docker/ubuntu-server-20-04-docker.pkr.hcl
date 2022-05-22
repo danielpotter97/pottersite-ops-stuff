@@ -24,7 +24,7 @@ source "proxmox" "ubuntu-server-focal-docker" {
     username = "${var.proxmox_api_token_id}"
     token = "${var.proxmox_api_token_secret}"
     # (Optional) Skip TLS Verification
-    # insecure_skip_tls_verify = true
+    insecure_skip_tls_verify = true
     
     # VM General Settings
     node = "pve"
@@ -143,6 +143,14 @@ build {
             "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
             "sudo apt-get -y update",
             "sudo apt-get install -y docker-ce docker-ce-cli containerd.io"
+        ]
+    }
+    # Provisioning ansible
+    provisioner "shell" {
+        inline = [
+            "sudo apt install software-properties-common",
+            "sudo add-apt-repository --yes --update ppa:ansible/ansible",
+            "sudo apt install ansible"
         ]
     }
 }
