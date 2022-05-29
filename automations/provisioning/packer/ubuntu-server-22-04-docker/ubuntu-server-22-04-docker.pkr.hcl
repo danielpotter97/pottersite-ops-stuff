@@ -95,13 +95,13 @@ source "proxmox" "pottersite-template01" {
     http_port_min = 8802
     http_port_max = 8802
 
-    ssh_username = "root"
+    ssh_username = "potteradmin"
 
     # (Option 1) Add your Password here
-    #ssh_password = "ubuntu"
+    ssh_password = "ubuntu"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-    ssh_private_key_file = "~/.ssh/id_rsa"
+    #ssh_private_key_file = "/home/potteradmin/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
@@ -146,15 +146,30 @@ build {
             "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
             "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
             "sudo apt-get -y update",
-            "sudo apt-get install -y docker-ce docker-ce-cli containerd.io"
+            "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
+            "sudo systemctl enable docker"
         ]
     }
     # Provisioning ansible
     provisioner "shell" {
         inline = [
-            "sudo apt install software-properties-common",
+            "sudo apt install software-properties-common -y",
             "sudo add-apt-repository --yes --update ppa:ansible/ansible",
-            "sudo apt install ansible"
+            "sudo apt install ansible -y"
+        ]
+    }
+     # Add SSH key to authorized key
+    provisioner "shell" {
+        inline = [
+            "sudo echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1PLAFEKbjTZFsu/L+A/Stai93GT47gvrrI6TlhWKDroXQSIUtBMKlwTS/FRCHDxrSY/rNa1+/i5t1tnjxdzQa1nCGWlTJXeiGtYYfhSy+lU8KAqUJhCwyJfa+WGv4mNbx6QyohuEFoTVzyCbfvEnvTJhgwMF+VD9HGczVQHnF58syfzz6pjPuDJ6RE16O6SQCnSWv5SPEyxh/qjz/MzG6id8IHQPqkM1mV64ILVQ09vslK5e0mH85nEnOmaeJK6Vrd79/MfUvRgQVVcE2gzMhYQTUgESivqqVme55rDK1Y5wXyKEGekxJuiPPdnr12HYPEVJR9YCYIXqsjG4CNARtqdyZOOX7Bt/NzVDDE44SH3Vvfu7jEt48y6ekgPJoz+6HNWz8C4+lcKdU+LzDgQAamaxDQhf4P+JrDTUNGyBnizIo4+cREwDoSerMmaP56f9SMTctUVmC8QjzjXAYo+xBZ2CwprHLOV41O3HH6kj7fYYWOrBrnkulAjanxDRBFeM= potteradmin@jenkins01.pottersite.local > /home/potteradmin/.ssh/authorized_keys"
+        ]
+    }
+
+    # Disable password authentication
+    provisioner "shell" {
+        inline = [
+            "sudo sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config",
+            "echo 'DenyUsers ubuntu' | sudo tee -a /etc/ssh/sshd_config"
         ]
     }
 }
