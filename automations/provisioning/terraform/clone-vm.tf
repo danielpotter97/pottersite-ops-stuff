@@ -6,7 +6,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     
     #VM general settings
     target_node = "pve"
-    vmid = "103"
+    vmid = "102"
     name = "pottersite-docker01"
     desc = "Swarm Cluster Manager Node"
     
@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     onboot = true 
 
     # VM OS Settings
-    clone = "pottersite-dummy01"
+    clone = "pottersite-template01"
 
     # VM System Settings
     agent = 1
@@ -40,7 +40,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM Cloud-Init Settings
     os_type = "cloud-init"
     
-    ipconfig0 = "ip=192.168.0.23/24,gw=192.168.0.1"
+    ipconfig0 = "ip=192.168.0.22/24,gw=192.168.0.1"
 
     nameserver = "192.168.0.1"
  
