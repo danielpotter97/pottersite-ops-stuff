@@ -7,7 +7,6 @@ autoinstall:
   ssh:
     install-server: true
     allow-pw: true
-    disable_root: false
     ssh_quiet_keygen: true
     allow_public_ssh_keys: true
   packages:
@@ -20,14 +19,17 @@ autoinstall:
       size: 0
   user-data:
     package_upgrade: false
-    timezone: Europe/Budapest
+    timezone: Europe/Berlin
     users:
-      - name: root
+      - name: potteradmin
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
-        #passwd: ubuntu
+        passwd: "$6$FhcddHFVZ7ABA4Gi$9ME1/XEiFHYx8Qh01w6CPqZZE7EDSf2tOc9Ugs89beYrUMyCyCxXzyBovoRwjN/6ipRnxCKeG/3PmJb1zvMAp/"
         # - or -
-        ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD7I9YvPy48/inMCIgT+2RTHGX0eqxDtL5wv4ATu0i8ZAVh3ku6tdAjrp1CVIu0FI7weWfMjumSnie9ox/ZtlsCPWJ10B1aZJT//+BnJc3oKE0fv1TQckNg/v5PpoE0Slc1YzQLk0GBEMfWrB1U9VUWyt1V29Sv50yuwYZahkRrevd6mgNAmtKoA5xVdKsJAFiXGTMzZtgdfEzgy7wYffzKFIqcFc890Ng1GmfubWnmlw4GL1Qmgfta5wStbUIr4uwdQNZhU/oiB4n/skyyrj4q7jM+G8pm1ieBvttgVpY0WUmyltFwn90DUgz1bSCONKP0aFywrYW/rIGZ4wgsygTjdDZ2NrX9luHK0uwGQD4Hm1uete30HH8T0b1/1Zanp7+AcsEE2g6NP14RwW0Y2o2bhamig02AWNhptaLfAgXYW+QFNXtjysBO8xY6IF88ffMJEPWPZhabJzNH2db7CLvclqfUoXXrxezUv4F6DkjxsC82fSgW9zFtGBpxNWuL8Qc= root@jenkins01.pottersite.local
+        # ssh_authorized_keys:
+        #   - your-ssh-key
+  late-commands:
+    - curtin in-target --target=/target -- systemctl start qemu-guest-agent
+    - curtin in-target --target=/target -- systemctl enable qemu-guest-agent
