@@ -27,8 +27,8 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM Memory Settings
     memory = 8192
 
-    scsihw            = "virtio-scsi-pci"
-    bootdisk          = "scsi0"
+    scsihw  = "virtio-scsi-pci"
+    bootdisk  = "scsi0"
 
     boot = "order=scsi0;net0"
 
