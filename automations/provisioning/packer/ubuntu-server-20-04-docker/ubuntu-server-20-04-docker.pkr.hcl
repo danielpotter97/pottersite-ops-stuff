@@ -153,4 +153,5 @@ build {
             "sudo apt install ansible"
         ]
     }
+    unmount_iso = true
 }
