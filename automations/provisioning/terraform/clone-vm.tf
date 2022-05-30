@@ -23,8 +23,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     cores = 2
     sockets = 1
     cpu = "host"    
-    
-    boot = "scsi0"
+    boot = "order=scsi0;net0"
     # VM Memory Settings
     memory = 8192
 
