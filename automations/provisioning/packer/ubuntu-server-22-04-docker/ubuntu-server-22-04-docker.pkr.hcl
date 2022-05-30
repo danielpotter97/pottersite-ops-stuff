@@ -172,7 +172,7 @@ build {
     provisioner "shell" {
         inline = [
             "sudo sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config",
-            "echo 'DenyUsers ubuntu' | sudo tee -a /etc/ssh/sshd_config"
+            "echo 'DenyUsers ubuntu,root' | sudo tee -a /etc/ssh/sshd_config"
             "sudo sed -i 's/^#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config"
         ]
     }
