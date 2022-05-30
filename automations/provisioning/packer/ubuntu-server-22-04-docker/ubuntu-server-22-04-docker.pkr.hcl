@@ -41,6 +41,7 @@ source "proxmox" "pottersite-template01" {
     # iso_checksum = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
     iso_storage_pool = "local"
     #unmount_iso = true
+    unmount = true
    
 
     # VM System Settings
@@ -106,7 +107,6 @@ source "proxmox" "pottersite-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
-    unmount = true
 }   
 
 # Build Definition to create the VM Template
