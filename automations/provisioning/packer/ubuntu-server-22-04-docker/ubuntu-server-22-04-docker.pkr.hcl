@@ -35,13 +35,13 @@ source "proxmox" "pottersite-template01" {
     # VM OS Settings
     # (Option 1) Local ISO File
     iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
-    unmount = true
+  
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
     # iso_checksum = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
     iso_storage_pool = "local"
-    #unmount_iso = true
+    unmount_iso = true
     
    
 
