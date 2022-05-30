@@ -28,8 +28,6 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     memory = 8192
 
     scsihw  = "virtio-scsi-pci"
-    bootdisk  = "scsi0"
-
 
     network {
         bridge = "vmbr0"
