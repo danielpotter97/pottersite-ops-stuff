@@ -29,7 +29,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     scsihw  = "virtio-scsi-pci"
     bootdisk = "virtio0"
-    boot = "order=virtio0,net0"
+    boot = "order=virtio0;net0"
     network {
         bridge = "vmbr0"
         model  = "virtio"
