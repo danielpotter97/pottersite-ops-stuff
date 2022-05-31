@@ -181,7 +181,7 @@ build {
     provisioner "shell" {
         inline = [
             "sudo netplan generate",
-            "sed -i 's/dhcp4: yes/dhcp4: no/' /etc/netplan/01-netcfg.yaml",
+            "sudo sed -i 's/dhcp4: yes/dhcp4: no/' /etc/netplan/01-netcfg.yaml",
             "sudo netplan apply"
         ]
     }
