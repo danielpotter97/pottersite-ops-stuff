@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     nameserver = "192.168.0.1"
 
-    scsihw  = "virtio-scsi-pci"ó
+    scsihw  = "virtio-scsi-pci"
     bootdisk = "virtio0"
     boot = "order=virtio0;net0"
 
