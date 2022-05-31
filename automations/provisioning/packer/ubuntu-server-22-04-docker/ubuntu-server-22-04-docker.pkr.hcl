@@ -182,7 +182,7 @@ build {
         inline = [<<EOT
             sudo netplan generate
             sudo echo
-            sudo cat > /etc/netplan/01-netcfg.yaml <<EOF 
+            sudo cat > /home/potteradmin/01-netcfg.yaml <<EOF 
             network: 
                 version: 2 
                 renderer: networkd 
@@ -190,6 +190,7 @@ build {
                     eth0 
                         dhcp4: no 
             EOF
+            cp /home/potteradmin/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
             sudo netplan apply
         EOT
         
