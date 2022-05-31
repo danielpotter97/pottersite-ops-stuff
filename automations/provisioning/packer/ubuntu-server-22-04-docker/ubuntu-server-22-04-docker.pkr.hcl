@@ -73,7 +73,7 @@ source "proxmox" "pottersite-template01" {
     } 
 
     # VM Cloud-Init Settings
-    cloud_init = true
+    cloud_init = false
     cloud_init_storage_pool = "local-lvm"
     
     
@@ -150,6 +150,7 @@ build {
             "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
             "sudo apt-get -y update",
             "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
+            "sudo apt-get install docker-compose",
             "sudo systemctl enable docker"
         ]
     }
