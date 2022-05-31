@@ -181,7 +181,7 @@ build {
     provisioner "shell" {
         inline = [
             <<EOT
-            "nic=`ifconfig | awk 'NR==1{print $1}'` && echo \
+            nic=`ifconfig | awk 'NR==1{print $1}'` && echo \
             cat > /etc/netplan/01-netcfg.yaml <<EOF \
             network: \
                 version: 2 \
@@ -189,8 +189,8 @@ build {
                 ethernets: \
                     $nic \
                         dhcp4: no \
-            EOF"
-            EOT 
+            EOF
+            EOT,
             "sudo netplan apply"
 
         ]
