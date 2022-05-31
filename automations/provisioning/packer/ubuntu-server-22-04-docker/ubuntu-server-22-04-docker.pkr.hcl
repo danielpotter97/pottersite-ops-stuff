@@ -180,15 +180,15 @@ build {
     # Turn off DHCP
     provisioner "shell" {
         inline = [
-            "nic=`ifconfig | awk 'NR==1{print $1}'` && echo
-            cat > /etc/netplan/01-netcfg.yaml <<EOF
-            network:
-                version: 2
-                renderer: networkd
-                ethernets:
-                    $nic
-                        dhcp4: no
-            EOF",
+            "nic=`ifconfig | awk 'NR==1{print $1}'` && echo \
+            cat > /etc/netplan/01-netcfg.yaml <<EOF \
+            network: \
+                version: 2 \
+                renderer: networkd \
+                ethernets: \
+                    $nic \
+                        dhcp4: no \
+            EOF", 
             "sudo netplan apply"
         ]
     }
