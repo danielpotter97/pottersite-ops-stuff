@@ -33,3 +33,4 @@ autoinstall:
   late-commands:
     - curtin in-target --target=/target -- systemctl start qemu-guest-agent
     - curtin in-target --target=/target -- systemctl enable qemu-guest-agent
+    - 'sed -i "s/dhcp4: false/&\n" /target/etc/netplan/00-installer-config.yaml'
