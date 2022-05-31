@@ -179,10 +179,20 @@ build {
     }
     # Turn off DHCP
     provisioner "shell" {
-        inline = [
-            "sudo netplan generate",
-            "sudo sed -i 's/dhcp4: yes/dhcp4: no/' /etc/netplan/01-netcfg.yaml",
-            "sudo netplan apply"
+        inline = [<<EOT
+            sudo netplan generate
+            sudo echo
+            sudo cat > /etc/netplan/01-netcfg.yaml <<EOF 
+            network: 
+                version: 2 
+                renderer: networkd 
+                ethernets: 
+                    eth0 
+                        dhcp4: no 
+            EOF
+            sudo netplan apply
+        EOT
+        
         ]
     }
 }
