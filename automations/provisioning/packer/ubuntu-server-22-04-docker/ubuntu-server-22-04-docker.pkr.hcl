@@ -188,8 +188,10 @@ build {
                 ethernets: 
                     $nic 
                         dhcp4: no 
+            EOF
+            sudo netplan apply
         EOT
-            "sudo netplan apply"
+        
         ]
     }
 }
