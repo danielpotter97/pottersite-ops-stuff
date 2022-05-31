@@ -175,7 +175,8 @@ build {
             "sudo sed -i 's/^PasswordAuthentication no/PasswordAuthentication no/' /etc/ssh/sshd_config",
             "echo 'DenyUsers ubuntu,root' | sudo tee -a /etc/ssh/sshd_config",
             "sudo sed -i 's/^#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config",
-            "sed -i 's/dhcp4: false/&\n' /etc/netplan/00-installer-config.yaml"
+            "sed -i 's/dhcp4/dhcp4: no/' /etc/netplan/01-netcfg.yaml"
+            "sudo netplan apply"
         ]
     }
 }
