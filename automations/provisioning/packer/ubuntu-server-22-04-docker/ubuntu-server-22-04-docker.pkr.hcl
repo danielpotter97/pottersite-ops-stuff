@@ -190,7 +190,7 @@ build {
                     eth0 
                         dhcp4: no 
             EOF
-            cp /home/potteradmin/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
+            sudo cp /home/potteradmin/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
             sudo netplan apply
         EOT
         
