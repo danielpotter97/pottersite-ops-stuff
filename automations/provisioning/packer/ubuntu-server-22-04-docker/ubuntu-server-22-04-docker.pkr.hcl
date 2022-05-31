@@ -180,6 +180,7 @@ build {
     # Turn off DHCP
     provisioner "shell" {
         inline = [
+            <<EOT
             "nic=`ifconfig | awk 'NR==1{print $1}'` && echo \
             cat > /etc/netplan/01-netcfg.yaml <<EOF \
             network: \
@@ -188,8 +189,10 @@ build {
                 ethernets: \
                     $nic \
                         dhcp4: no \
-            EOF", 
+            EOF"
+            EOT 
             "sudo netplan apply"
+
         ]
     }
 }
