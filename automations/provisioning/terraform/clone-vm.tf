@@ -16,7 +16,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM OS Settings
     clone = "pottersite-template01"
     ipconfig0 = "ip=192.168.0.22/24,gw=192.168.0.1"
-
+    default_ipv4_address = "192.168.0.22"
     nameserver = "192.168.0.1"
 
     # VM System Settings
