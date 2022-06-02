@@ -48,6 +48,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     type     = "ssh"
     user     = "potteradmin"
     host     = self.default_ipv4_address
+    private_key = "${file("/home/potteradmin/.ssh/id_rsa")}"
     }
 
     provisioner "remote-exec" {
