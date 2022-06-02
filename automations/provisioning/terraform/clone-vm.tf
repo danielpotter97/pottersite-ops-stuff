@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
   
  
      # (Optional) Default User
-    ciuser = "potteradmins"
+    ciuser = "potteradmin"
     
     # (Optional) Add your SSH KEY
     sshkeys = <<EOF
