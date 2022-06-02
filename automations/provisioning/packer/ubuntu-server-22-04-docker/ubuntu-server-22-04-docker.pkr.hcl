@@ -35,7 +35,6 @@ source "proxmox" "pottersite-template01" {
     # VM OS Settings
     # (Option 1) Local ISO File
     iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
-    unmount = true
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
@@ -108,7 +107,7 @@ source "proxmox" "pottersite-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
-}   unmount_iso = true
+}   
 
 # Build Definition to create the VM Template
 build {
