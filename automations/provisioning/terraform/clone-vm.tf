@@ -41,7 +41,11 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM Cloud-Init Settings
     os_type = "cloud-init"
     
-  
+    lifecycle {
+        ignore_changes = [
+         network,
+        ]
+    }
  
      # (Optional) Default User
     ciuser = "potteradmin"
