@@ -22,7 +22,7 @@ autoinstall:
     timezone: Europe/Berlin
     users:
       - name: potteradmin
-        groups: [adm, sudo]
+        groups: [adm, sudo, cdrom]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash

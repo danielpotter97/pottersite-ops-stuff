@@ -41,7 +41,7 @@ source "proxmox" "pottersite-template01" {
     # iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
     # iso_checksum = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
     iso_storage_pool = "local"
-    unmount_iso = true
+    
     
    
 
@@ -108,7 +108,7 @@ source "proxmox" "pottersite-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
-}   
+}   unmount_iso = true
 
 # Build Definition to create the VM Template
 build {
@@ -151,6 +151,7 @@ build {
             "sudo apt-get -y update",
             "sudo apt-get install -y docker-ce docker-ce-cli containerd.io",
             "sudo apt-get install -y docker-compose",
+            "sudo usermod -aG docker potteradmin",
             "sudo systemctl enable docker"
         ]
     }
@@ -176,24 +177,6 @@ build {
             "echo 'DenyUsers ubuntu,root' | sudo tee -a /etc/ssh/sshd_config",
             "sudo sed -i 's/^#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config"
         ]
-    }
-    # Turn off DHCP
-    provisioner "shell" {
-        inline = [<<EOT
-            sudo netplan generate
-            sudo echo
-            sudo cat > /home/potteradmin/01-netcfg.yaml <<EOF 
-            network: 
-                version: 2 
-                renderer: networkd 
-                ethernets: 
-                    eth0 
-                        dhcp4: no 
-            EOF
-            sudo cp /home/potteradmin/01-netcfg.yaml /etc/netplan/01-netcfg.yaml
-            sudo netplan apply
-        EOT
-        
-        ]
+    
     }
 }
