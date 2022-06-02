@@ -43,9 +43,18 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     
  
 
+    
+    connection {
+    type     = "ssh"
+    user     = "potteradmin"
+    host     = self.default_ipv4_address
+    }
+
     provisioner "remote-exec" {
-    when = create
-    command = "echo \"The IP of vm is '${default_ipv4_address}'\""
+    inline = [
+      "reboot",
+      
+    ]
     }
  
      # (Optional) Default User
