@@ -43,7 +43,10 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     
  
 
-    automatic_reboot = true
+    provisioner "remote-exec" {
+    when = create
+    command = "echo \"The IP of vm is '${default_ipv4_address}'\""
+    }
  
      # (Optional) Default User
     ciuser = "potteradmin"
