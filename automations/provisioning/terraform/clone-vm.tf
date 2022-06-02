@@ -43,13 +43,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     
  
 
-    initialization {
-        ip_config {
-             ipv4 {
-             address = "192.168.0.22"
-            }
-        }
-    }
+    default_ipv4_address = "192.168.0.22"
  
      # (Optional) Default User
     ciuser = "potteradmin"
