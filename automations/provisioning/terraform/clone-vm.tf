@@ -41,11 +41,13 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     # VM Cloud-Init Settings
     os_type = "cloud-init"
     
-    lifecycle {
-        ignore_changes = [
-         network,
-        ]
-    }
+ 
+
+    initialization {
+        ip_config {
+             ipv4 {
+             address = "192.168.0.22"
+      }
  
      # (Optional) Default User
     ciuser = "potteradmin"
