@@ -2,11 +2,15 @@
 # ---
 # Create a new VM from a clone
 
+variable "vmid" {
+    type = string
+}
+
 resource "proxmox_vm_qemu" "pottersite-docker01" {
     
     #VM general settings
     target_node = "pve"
-    vmid = "102"
+    vmid = var.vmid
     name = "pottersite-docker01"
     desc = "Swarm Cluster Manager Node"
     
