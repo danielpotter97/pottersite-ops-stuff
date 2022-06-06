@@ -23,6 +23,12 @@ pipeline {
             }
         }
 
+        stage('Reboot VM') {
+            steps{
+                
+            }
+        }
+
         stage('cleanup') {
             steps{
               cleanWs()
