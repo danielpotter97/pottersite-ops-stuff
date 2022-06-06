@@ -25,11 +25,11 @@ pipeline {
         stage('terraform plan') {
             steps{
                 dir ("automations/provisioning/terraform"){
-                    sh """ terraform plan \
-                    -var-file="credentials.tfvars" \
+                    sh " terraform plan \
+                    -var-file='credentials.tfvars' \
                     -var 'vmid'=$params.vmid \
-                    -no-color -out=plan.out"
-                    """
+                    -no-color -out=plan.out
+                    "
                 }
             }
         }
@@ -37,11 +37,11 @@ pipeline {
         stage('terraform apply') {
             steps{
                 dir ("automations/provisioning/terraform"){
-                    sh """terraform apply \
-                         -var-file="credentials.tfvars" \
+                    sh " terraform apply \
+                         -var-file='credentials.tfvars' \
                          -var 'vmid'=$params.vmid \
-                        --auto-approve"
-                    """
+                        --auto-approve
+                    "
                     sh "terraform output"
                 }
             }
