@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     # VM System Settings
     agent = 1
-    automatic_reboot = true
+
     # VM CPU Settings
     cores = 2
     sockets = 1
