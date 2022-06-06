@@ -24,20 +24,26 @@ pipeline {
 
         stage('terraform plan') {
             steps{
-                sh "cd automations/provisioning/terraform && terraform plan \
+                dir ("automations/provisioning/terraform"){
+                    sh """ terraform plan \
                     -var-file="credentials.tfvars" \
                     -var 'vmid'=$params.vmid \
                     -no-color -out=plan.out"
+                    """
+                }
             }
         }
 
         stage('terraform apply') {
             steps{
-                sh "cd automations/provisioning/terraform && timeout 1h terraform apply \
-                    -var-file="credentials.tfvars" \
-                    -var 'vmid'=$params.vmid \
-                    --auto-approve"
-                sh "terraform output"
+                dir ("automations/provisioning/terraform"){
+                    sh """terraform apply \
+                         -var-file="credentials.tfvars" \
+                         -var 'vmid'=$params.vmid \
+                        --auto-approve"
+                    """
+                    sh "terraform output"
+                }
             }
         }
 
