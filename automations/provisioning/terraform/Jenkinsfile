@@ -28,6 +28,11 @@ pipeline {
                     sh """terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
+                            -var 'vmname=$params.vmname' \
+                            -var 'cores=$params.cores' \
+                            -var 'memory=$params.memory' \
+                            -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
+                            -var 'desc=$params.desc' \
                             -no-color \
                             -out=plan.out
                     """
@@ -41,6 +46,11 @@ pipeline {
                     sh """terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
+                         -var 'vmname=$params.vmname' \
+                         -var 'cores=$params.cores' \
+                         -var 'memory=$params.memory' \
+                         -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
+                         -var 'desc=$params.desc' \
                          --auto-approve
                     """
                     sh "terraform output"

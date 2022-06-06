@@ -6,13 +6,34 @@ variable "vmid" {
     type = string
 }
 
+variable "cores" {
+    type = string
+}
+
+variable "memory" {
+    type = string
+}
+
+variable "ip" {
+    type = string
+}
+
+variable "vmname" {
+    type = string
+}
+
+variable "desc" {
+    type = string
+}
+
+
 resource "proxmox_vm_qemu" "pottersite-docker01" {
     
     #VM general settings
     target_node = "pve"
     vmid = var.vmid
-    name = "pottersite-docker01"
-    desc = "Swarm Cluster Manager Node"
+    name = var.vmname
+    desc = var.desc
     
     # VM Advanced General Settings
     onboot = true 
@@ -24,12 +45,12 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     agent = 1
 
     # VM CPU Settings
-    cores = 2
+    cores = var.cores
     sockets = 1
     cpu = "host"    
   
     # VM Memory Settings
-    memory = 8192
+    memory = var.memory
 
     scsihw  = "virtio-scsi-pci"
     bootdisk = "virtio0"
@@ -42,7 +63,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     # VM Cloud-Init Settings
     os_type = "cloud-init"
-    ipconfig0 = "ip=192.168.0.30/24,gw=192.168.0.1"
+    ipconfig0 = var.ip
     nameserver = "192.168.0.1"
 
  
