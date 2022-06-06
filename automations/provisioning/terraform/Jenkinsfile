@@ -24,7 +24,10 @@ pipeline {
 
         stage('terraform plan') {
             steps{
-                sh 'cd automations/provisioning/terraform && terraform plan -var-file="credentials.tfvars" -no-color -out=plan.out'
+                sh "cd automations/provisioning/terraform && terraform plan \
+                 -var-file="credentials.tfvars" \
+                 -var 'vmid'=$params.vmid \
+                 -no-color -out=plan.out"
             }
         }
 
