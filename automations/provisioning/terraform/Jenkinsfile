@@ -28,7 +28,8 @@ pipeline {
                     sh " terraform plan \
                     -var-file='credentials.tfvars' \
                     -var 'vmid'=$params.vmid \
-                    -no-color -out=plan.out
+                    -no-color \
+                    -out=plan.out
                     "
                 }
             }
