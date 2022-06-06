@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
 
     scsihw  = "virtio-scsi-pci"
     bootdisk = "virtio0"
-    boot = "order=virtio0;ide0;ide2"
+    boot = "order=net0;virtio0;ide0;ide2"
 
     network {
         bridge = "vmbr0"
@@ -51,9 +51,9 @@ resource "proxmox_vm_qemu" "pottersite-docker01" {
     private_key = "${file("/home/terraform-key")}"
     }
 
-    provisioner "remote-exec" {
+    provisioner "local-exec" {
     inline = [
-      "reboot",
+      "ssh potteradmin@ 'reboot'",
       
     ]
     }
