@@ -176,6 +176,12 @@ build {
             "echo 'DenyUsers ubuntu,root' | sudo tee -a /etc/ssh/sshd_config",
             "sudo sed -i 's/^#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config"
         ]
-    
+    }
+    # Disable DHCP
+
+    provisioner "shell" {
+        inline = [
+            "sudo update-rc.d -f dhcp3-server remove"
+        ]
     }
 }
