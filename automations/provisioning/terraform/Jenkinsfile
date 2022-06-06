@@ -33,7 +33,10 @@ pipeline {
 
         stage('terraform apply') {
             steps{
-                sh 'cd automations/provisioning/terraform && timeout 1h terraform apply -var-file="credentials.tfvars" --auto-approve'
+                sh "cd automations/provisioning/terraform && timeout 1h terraform apply \
+                 -var-file="credentials.tfvars" \
+                 -var 'vmid'=$params.vmid \
+                --auto-approve"
                 sh "terraform output"
             }
         }
