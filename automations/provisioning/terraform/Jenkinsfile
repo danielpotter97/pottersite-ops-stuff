@@ -26,10 +26,10 @@ pipeline {
             steps{
                 dir ("automations/provisioning/terraform"){
                     sh " terraform plan \
-                    -var-file='credentials.tfvars' \
-                    -var 'vmid=$params.vmid' \
-                    -no-color \
-                    -out=plan.out
+                            -var-file='credentials.tfvars' \
+                            -var 'vmid=$params.vmid' \
+                            -no-color \
+                            -out=plan.out
                     "
                 }
             }
