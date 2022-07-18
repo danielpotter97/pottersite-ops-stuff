@@ -27,7 +27,7 @@ variable "desc" {
 }
 
 
-resource "proxmox_vm_qemu"  {
+resource "proxmox_vm_qemu" ""  {
     
     #VM general settings
     target_node = "pve"
