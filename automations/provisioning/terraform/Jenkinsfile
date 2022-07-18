@@ -11,7 +11,7 @@ pipeline {
             }
         }
         stage('Add vmname to resource field') {
-            sh 'sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' automations/provisioning/terraform/clone-vm.tf '
+            sh "sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' automations/provisioning/terraform/clone-vm.tf"
         }
         stage('terraform format check') {
             steps{
