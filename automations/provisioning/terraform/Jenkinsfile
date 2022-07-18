@@ -10,6 +10,9 @@ pipeline {
                checkout scm
             }
         }
+        stage('Add vmname to resource field') {
+            sh 'cd automations/provisioning/terraform && sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"g' '
+        }
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
