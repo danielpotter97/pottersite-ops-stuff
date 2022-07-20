@@ -1,13 +1,14 @@
 #version=RHEL8
+ignoredisk --only-use=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Use graphical install
 # graphical
 # Use CDROM installation media
-cdrom
+liveimg
 text
 # Keyboard layouts
-keyboard --vckeymap=hu --xlayouts='hu'
+keyboard --vckeymap=us --xlayouts='us'
 # System language
 lang en_US.UTF-8
 
