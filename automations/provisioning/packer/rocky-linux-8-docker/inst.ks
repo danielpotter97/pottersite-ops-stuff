@@ -14,7 +14,7 @@ lang en_US.UTF-8
 # Network information
 network --bootproto=dhcp --device=ens18 --noipv6 --activate
 network  --hostname=pottersite-template01
-repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
+#repo --name=AppStream --mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
 # Root password
 rootpw Packer
 # Run the Setup Agent on first boot
