@@ -8,7 +8,7 @@
       "proxmox_storage_pool_type": "lvm",
       "proxmox_storage_format": "qcow2",
       "proxmox_iso_pool": "local:iso",
-      "centos_image": "Rocky-8.5-x86_64-minimal.iso",
+      "centos_image": "Rocky-8.4-x86_64-minimal.iso",
       "template_name": "pottersite-template-01",
       "template_description": "Rocky Linux 8 Template",
       "version": ""
