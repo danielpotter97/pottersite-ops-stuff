@@ -12,7 +12,7 @@ pipeline {
 
         stage('Validate packer file') {
             steps{
-                sh """packer validate \  
+                sh """packer validate \
                         -var proxmox_username="root@pam" \
                         -var token="bf14e2b7-d13b-4dcd-a40a-cc5f7f2b396a" \
                         -var proxmox_url=https://192.168.0.1:8006/api2/json \
