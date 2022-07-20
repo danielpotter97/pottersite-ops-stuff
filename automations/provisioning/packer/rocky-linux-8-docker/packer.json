@@ -50,7 +50,7 @@
         "http_port_min": 8802,
         "http_port_max": 8802,
         "ssh_username": "potteradmin",
-        "ssh_password": "root",
+        "ssh_password": "Packer",
         "ssh_port": 22,
         "ssh_timeout": "20m",
         "unmount_iso": true,

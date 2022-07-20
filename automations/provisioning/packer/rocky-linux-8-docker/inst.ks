@@ -31,21 +31,14 @@ timezone Etc/UTC --isUtc
 part / --fstype="xfs" --grow --size=6144
 part swap --fstype="swap" --size=512
 
+user --name=potteradmin --groups=wheel --password=Packer --iscrypted
+
 reboot
 
 
 %packages --ignoremissing --excludedocs
 @^minimal-environment
-openssh-server
-openssh-clients
-sudo
-kexec-tools
-wget
-tar
-unzip
-bc
-curl
-# allow for ansible
+qemu-guest-agent
 python3
 python3-libselinux
 
