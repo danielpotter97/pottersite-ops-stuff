@@ -13,7 +13,7 @@ keyboard --vckeymap=hu --xlayouts='hu'
 lang en_US.UTF-8
 
 # Network information
-network  --bootproto=dhcp --ipv6=auto --activate
+network --bootproto=dhcp --device=ens18 --noipv6 --activate
 network  --hostname=pottersite-template01
 repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
 # Root password
