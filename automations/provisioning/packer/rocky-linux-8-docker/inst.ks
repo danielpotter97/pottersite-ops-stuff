@@ -22,7 +22,7 @@ firstboot --disabled
 # Do not configure the X Window System
 skipx
 # System services
-services --disabled="kdump" --enabled="sshd,rsyslog,chronyd"
+services --disabled="kdump" --enabled="sshd,chronyd"
 firewall --disabled
 selinux --disabled
 # System timezone
