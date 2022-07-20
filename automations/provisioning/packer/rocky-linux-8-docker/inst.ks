@@ -34,15 +34,19 @@ part swap --fstype="swap" --size=512
 reboot
 
 
-%packages
+%packages --ignoremissing --excludedocs
 @^minimal-environment
 openssh-server
 openssh-clients
 sudo
 kexec-tools
+wget
+tar
+unzip
+bc
 curl
 # allow for ansible
-python3
+python36
 python3-libselinux
 
 # unnecessary firmware
@@ -80,30 +84,6 @@ python3-libselinux
 
 %post
 
-
-# this is installed by default but we don't need it in virt
-echo "Removing linux-firmware package."
-yum -C -y remove linux-firmware
-
-# Remove firewalld; it is required to be present for install/image building.
-echo "Removing firewalld."
-yum -C -y remove firewalld --setopt="clean_requirements_on_remove=1"
-
-
-# although we want console output going to the serial console, we don't
-# actually have the opportunity to login there. FIX.
-# we don't really need to auto-spawn _any_ gettys.
-sed -i '/^#NAutoVTs=.*/ a\
-NAutoVTs=0' /etc/systemd/logind.conf
-
-# set virtual-guest as default profile for tuned
-echo "virtual-guest" > /etc/tuned/active_profile
-
-# Because memory is scarce resource in most cloud/virt environments,
-# and because this impedes forensics, we are differing from the Fedora
-# default of having /tmp on tmpfs.
-echo "Disabling tmpfs for /tmp."
-systemctl mask tmp.mount
 
 cat <<EOL > /etc/sysconfig/kernel
 # UPDATEDEFAULT specifies if new-kernel-pkg should make
