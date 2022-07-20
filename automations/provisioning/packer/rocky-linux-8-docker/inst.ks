@@ -5,7 +5,7 @@ clearpart --none --initlabel
 # Use graphical install
 # graphical
 # Use CDROM installation media
-liveimg
+cdrom
 text
 # Keyboard layouts
 keyboard --vckeymap=us --xlayouts='us'
@@ -24,11 +24,14 @@ firstboot --disabled
 skipx
 # System services
 services --disabled="kdump" --enabled="sshd,rsyslog,chronyd"
+firewall --disabled
+selinux --disabled
 # System timezone
 timezone Etc/UTC --isUtc
 # Disk partitioning information
 part / --fstype="xfs" --grow --size=6144
 part swap --fstype="swap" --size=512
+
 reboot
 
 
