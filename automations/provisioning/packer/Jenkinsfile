@@ -13,9 +13,9 @@ pipeline {
         stage('Validate packer file') {
             steps{
                 sh """packer validate \
-                        -var proxmox_username="root@pam" \
+                        -var proxmox_username="root@pam!terraform" \
                         -var token="bf14e2b7-d13b-4dcd-a40a-cc5f7f2b396a" \
-                        -var proxmox_url=https://192.168.0.1:8006/api2/json \
+                        -var proxmox_url=https://192.168.0.20:8006/api2/json \
                         automations/provisioning/packer/rocky-linux-8-docker/packer.json
                 """
             }
@@ -24,9 +24,9 @@ pipeline {
         stage('Build packer file') {
             steps{
                 sh """packer build \
-                        -var proxmox_username="root@pam" \
+                        -var proxmox_username="root@pam!terraform" \
                         -var token="bf14e2b7-d13b-4dcd-a40a-cc5f7f2b396a" \
-                        -var proxmox_url=https://192.168.0.1:8006/api2/json \
+                        -var proxmox_url=https://192.168.0.20:8006/api2/json \
                         automations/provisioning/packer/rocky-linux-8-docker/packer.json
                 """
             }
