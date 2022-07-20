@@ -1,4 +1,5 @@
 #version=RHEL8
+ignoredisk --only-use=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Use graphical install
@@ -13,7 +14,7 @@ lang en_US.UTF-8
 
 # Network information
 network  --bootproto=dhcp --ipv6=auto --activate
-network  --hostname=pottersite-template-01
+network  --hostname=pottersite-template01
 repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
 # Root password
 rootpw Packer
@@ -133,7 +134,7 @@ yum update -y
 
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 
-
+yum clean all
 %end
 
 %anaconda
