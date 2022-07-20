@@ -46,7 +46,7 @@ unzip
 bc
 curl
 # allow for ansible
-python36
+python3
 python3-libselinux
 
 # unnecessary firmware
@@ -79,48 +79,13 @@ python3-libselinux
 %end
 
 %addon com_redhat_kdump --enable --reserve-mb='auto'
-
 %end
 
 %post
 
-
-cat <<EOL > /etc/sysconfig/kernel
-# UPDATEDEFAULT specifies if new-kernel-pkg should make
-# new kernels the default
-UPDATEDEFAULT=yes
-
-# DEFAULTKERNEL specifies the default kernel package type
-DEFAULTKERNEL=kernel
-EOL
-
-# make sure firstboot doesn't start
-echo "RUN_FIRSTBOOT=NO" > /etc/sysconfig/firstboot
-
-echo "Fixing SELinux contexts."
-touch /var/log/cron
-touch /var/log/boot.log
-mkdir -p /var/cache/yum
-/usr/sbin/fixfiles -R -a restore
-
-# reorder console entries
-sed -i 's/console=tty0/console=tty0 console=ttyS0,115200n8/' /boot/grub2/grub.cfg
-
-#echo "Zeroing out empty space."
-# This forces the filesystem to reclaim space from deleted files
-# dd bs=1M if=/dev/zero of=/var/tmp/zeros || :
-# rm -f /var/tmp/zeros
-# echo "(Don't worry -- that out-of-space error was expected.)"
-
-yum update -y
-
+# sudo
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+echo 'potteradmin ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/potteradmin
+chmod 440 /etc/sudoers.d/potteradmin
 
-yum clean all
-%end
-
-%anaconda
-pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
-pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
-pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 %end
