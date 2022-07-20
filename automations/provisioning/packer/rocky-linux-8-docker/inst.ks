@@ -5,8 +5,7 @@ clearpart --none --initlabel
 # Use graphical install
 # graphical
 # Use CDROM installation media
-cdrom
-text
+
 # Keyboard layouts
 keyboard --vckeymap=us --xlayouts='us'
 # System language
