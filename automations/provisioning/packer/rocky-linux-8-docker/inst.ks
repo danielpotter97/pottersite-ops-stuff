@@ -86,5 +86,7 @@ python3-libselinux
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 echo 'potteradmin ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/potteradmin
 chmod 440 /etc/sudoers.d/potteradmin
+systemctl enable qemu-guest-agent
+systemctl start qemu-guest-agent
 
 %end
