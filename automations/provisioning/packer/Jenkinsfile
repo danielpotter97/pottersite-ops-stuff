@@ -12,23 +12,22 @@ pipeline {
 
         stage('Validate packer file') {
             steps{
-                sh """packer validate \
-                        -var proxmox_username="root@pam!terraform" \
-                        -var token="bf14e2b7-d13b-4dcd-a40a-cc5f7f2b396a" \
-                        -var proxmox_url=https://192.168.0.20:8006/api2/json \
-                        automations/provisioning/packer/rocky-linux-8-docker/packer.json
-                """
+                dir ("automations/provisioning/terraform"){
+                    sh """packer validate \
+                        -var-file='credentials.tfvars' 
+                        rocky-linux-8-docker/packer.json
+                    """
+                 }
             }
         }
 
         stage('Build packer file') {
             steps{
-                sh """PACKER_LOG=1 packer build \
-                        -var proxmox_username="root@pam!terraform" \
-                        -var token="bf14e2b7-d13b-4dcd-a40a-cc5f7f2b396a" \
-                        -var proxmox_url=https://192.168.0.20:8006/api2/json \
-                        automations/provisioning/packer/rocky-linux-8-docker/packer.json
-                """
+                dir ("automations/provisioning/terraform"){
+                    sh """PACKER_LOG=1 packer build \
+                        -var-file=credentials.tfvars'
+                        rocky-linux-8-docker/packer.json
+                    """
             }
         }
 
