@@ -33,17 +33,17 @@
         ],
         "disks": [
           {
-            "type": "scsi",
+            "type": "virtio",
             "disk_size": "30G",
-            "storage_pool": "{{user `proxmox_storage_pool`}}",
-            "storage_pool_type": "{{user `proxmox_storage_pool_type`}}",
-            "format": "{{user `proxmox_storage_format`}}"
+            "storage_pool": "local-lvm",
+            "storage_pool_type": "lvm",
+            "format": "qcow2"
           }
         ],
         "scsi_controller": "virtio-scsi-pci",
         "iso_file": "{{user `proxmox_iso_pool`}}/{{user `centos_image`}}",
         "boot_wait": "10s",
-        "cores": "2",
+        "cores": "1",
         "memory": "2048",
         "http_directory": "/home/automations/provisioning/packer/rocky-linux-8-docker",
         "http_bind_address": "192.168.0.21",
