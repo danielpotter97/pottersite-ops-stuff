@@ -17,7 +17,7 @@ pipeline {
                         -var-file='credentials.tfvars' 
                         rocky-linux-8-docker/packer.json
                     """
-                 }
+                }
             }
         }
 
@@ -28,6 +28,7 @@ pipeline {
                         -var-file=credentials.tfvars'
                         rocky-linux-8-docker/packer.json
                     """
+                }
             }
         }
 
