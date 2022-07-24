@@ -1,5 +1,4 @@
 #version=RHEL8
-ignoredisk --only-use=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Use graphical install
