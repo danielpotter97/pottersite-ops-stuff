@@ -14,7 +14,7 @@ pipeline {
             steps{
                 dir ("automations/provisioning/packer"){
                     sh """packer validate \
-                        -var-file='credentials.pkr.hcl' \
+                        -var-file='credentials.json' \
                         rocky-linux-8-docker/packer.json
                     """
                 }
@@ -25,7 +25,7 @@ pipeline {
             steps{
                 dir ("automations/provisioning/packer"){
                     sh """PACKER_LOG=1 packer build \
-                        -var-file='credentials.pkr.hcl' \
+                        -var-file='credentials.json' \
                         rocky-linux-8-docker/packer.json
                     """
                 }
