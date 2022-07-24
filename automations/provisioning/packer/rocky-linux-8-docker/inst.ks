@@ -78,9 +78,6 @@ python3-libselinux
 -zd1211-firmware
 %end
 
-
-%end
-
 %addon com_redhat_kdump --enable --reserve-mb='auto'
 %end
 
