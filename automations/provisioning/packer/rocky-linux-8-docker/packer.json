@@ -21,7 +21,6 @@
         "proxmox_url": "{{ user `proxmox_url`}}",
         "insecure_skip_tls_verify": true,
         "node": "{{user `proxmox_node`}}",
-        "vm_id": "101",
         "boot_command": [
           "<tab> text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/inst.ks<enter><wait>"
         ],
