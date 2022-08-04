@@ -6,7 +6,7 @@ clearpart --none --initlabel
 # Use CDROM installation media
 
 # Keyboard layouts
-keyboard --vckeymap=us --xlayouts='us'
+keyboard --vckeymap=hu --xlayouts='hu'
 # System language
 lang en_US.UTF-8
 
