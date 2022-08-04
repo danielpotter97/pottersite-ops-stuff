@@ -30,6 +30,8 @@ timezone Etc/UTC --isUtc
 part / --fstype="xfs" --grow --size=6144
 part swap --fstype="swap" --size=512
 
+eula --agreed
+services --enabled=NetworkManager,sshd
 
 reboot
 
@@ -83,10 +85,8 @@ python3-libselinux
 %post
 
 # sudo
-sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
-echo 'potteradmin ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/potteradmin
-chmod 440 /etc/sudoers.d/potteradmin
-systemctl enable qemu-guest-agent
-systemctl start qemu-guest-agent
+
+sudo systemctl enable qemu-guest-agent
+sudo systemctl start qemu-guest-agent
 
 %end
