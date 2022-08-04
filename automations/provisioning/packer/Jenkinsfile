@@ -1,3 +1,5 @@
+def path = "automations/provisioning/packer" 
+
 pipeline {
     agent any
    
@@ -6,7 +8,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm 
-               sh 'sudo cp -R ${WORKSPACE}/automations /home'
+               sh 'sudo cp -R ${WORKSPACE}/automations/home'
             }
         }
 
@@ -14,8 +16,8 @@ pipeline {
             steps{
                 dir ("automations/provisioning/packer"){
                     sh """packer validate \
-                        -var-file='credentials.json' \
-                        rocky-linux-8-docker/packer.json\
+                        -var-file='${path}/credentials.json' \
+                        ${path}/rocky-linux-8-docker/packer.json\
                         -var 'ssh_passwd=$params.ssh_passwd'
                     """
                 }
@@ -24,14 +26,12 @@ pipeline {
 
         stage('Build packer file') {
             steps{
-                withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd'){
-                    dir ("automations/provisioning/packer"){
-                      sh """PACKER_LOG=1 packer build \
-                             -var-file='credentials.json' \
-                             rocky-linux-8-docker/packer.json \
-                            -var 'ssh_passwd=$ssh_passwd'
-                     """
-                    }
+                withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd'){  
+                    sh """PACKER_LOG=1 packer build \
+                         -var-file='${path}/credentials.json' \
+                         ${path}/rocky-linux-8-docker/packer.json \
+                        -var 'ssh_passwd=$ssh_passwd'
+                     ""
                 }
             }
         }
