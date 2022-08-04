@@ -28,7 +28,7 @@ pipeline {
                 dir ("automations/provisioning/packer"){
                     sh """PACKER_LOG=1 packer build \
                         -var-file='credentials.json' \
-                        rocky-linux-8-docker/packer.json
+                        rocky-linux-8-docker/packer.json \ 
                         -var 'ssh_passwd=$ssh_passwd'
                     """
                 }
