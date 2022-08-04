@@ -11,7 +11,8 @@
       "centos_image": "Rocky-8.4-x86_64-minimal.iso",
       "template_name": "pottersite-template-01",
       "template_description": "Rocky Linux 8 Template",
-      "version": ""
+      "version": "",
+      "ssh_passwd": ""
     },
     "builders": [
       {
@@ -49,12 +50,13 @@
         "http_port_min": 8802,
         "http_port_max": 8802,
         "ssh_username": "root",
-        "ssh_password": "Packer",
+        "ssh_password": "{{user `ssh_passwd`}}",
         "ssh_port": 22,
         "ssh_timeout": "20m",
         "unmount_iso": false,
         "template_name": "{{user `template_name`}}",
-        "template_description": "{{user `template_description`}}"
+        "template_description": "{{user `template_description`}}",
+        "cloud_init": true 
       }
     ],
     "provisioners": [
