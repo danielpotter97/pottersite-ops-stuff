@@ -36,7 +36,7 @@ services --enabled=NetworkManager,sshd
 reboot
 
 
-%packages --ignoremissing --excludedocs
+%packages
 @^minimal-environment
 qemu-guest-agent
 openssh-server
