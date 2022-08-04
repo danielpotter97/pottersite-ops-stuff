@@ -56,7 +56,8 @@
         "unmount_iso": false,
         "template_name": "{{user `template_name`}}",
         "template_description": "{{user `template_description`}}",
-        "cloud_init": true 
+        "cloud_init": true,
+        "cloud_init_storage_pool": "local-lvm"
       }
     ],
     "provisioners": [
