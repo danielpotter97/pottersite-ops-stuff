@@ -52,7 +52,7 @@
         "ssh_password": "Packer",
         "ssh_port": 22,
         "ssh_timeout": "20m",
-        "unmount_iso": true,
+        "unmount_iso": false,
         "template_name": "{{user `template_name`}}",
         "template_description": "{{user `template_description`}}"
       }
