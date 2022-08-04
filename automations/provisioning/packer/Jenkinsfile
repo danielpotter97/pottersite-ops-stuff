@@ -1,4 +1,4 @@
-def path = "automations/provisioning/packer" 
+def path = "/home/automations/provisioning/packer" 
 
 pipeline {
     agent any
