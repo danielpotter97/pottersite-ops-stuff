@@ -31,7 +31,7 @@ pipeline {
                          -var-file='${path}/credentials.json' \
                          ${path}/rocky-linux-8-docker/packer.json \
                         -var 'ssh_passwd=$ssh_passwd'
-                   ""
+                    """
                 }
             }
         }
