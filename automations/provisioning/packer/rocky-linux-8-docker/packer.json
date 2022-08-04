@@ -71,7 +71,13 @@
           ">/var/log/wtmp",
           ">/var/log/btmp",
           "rm -rf /tmp/* /var/tmp/*",
-          "unset HISTFILE; rm -rf /home/*/.*history /root/.*history"
+          "unset HISTFILE; rm -rf /home/*/.*history /root/.*history",
+          "sudo dnf install -y yum-utils",
+          "sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo",
+          "sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin",
+          "sudo systemctl enable --now docker",
+          "dnf install -y epel-release",
+          "dnf install -y ansible"
         ],
         "only": ["proxmox"]
       }
