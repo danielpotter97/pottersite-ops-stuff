@@ -38,17 +38,11 @@ reboot
 
 %packages
 @^minimal-environment
-qemu-guest-agent
 openssh-server
 openssh-clients
 sudo
 kexec-tools
-curl
-wget
-unzip
-# allow for ansible
-python3
-python3-libselinux
+
 
 # unnecessary firmware
 -aic94xx-firmware
@@ -85,6 +79,7 @@ python3-libselinux
 %post
 
 # sudo
+yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
 
 sudo systemctl enable qemu-guest-agent
 sudo systemctl start qemu-guest-agent
