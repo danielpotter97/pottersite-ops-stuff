@@ -10,6 +10,8 @@ keyboard --vckeymap=hu --xlayouts='hu'
 # System language
 lang en_US.UTF-8
 
+user --name=potteradmin --groups=wheel --password= --iscrypted
+
 # Network information
 network --bootproto=dhcp --device=ens18 --noipv6 --activate
 #repo --name=AppStream --mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
@@ -77,8 +79,7 @@ kexec-tools
 
 %post
 
-#add potteradmin user 
-sudo useradd -m potteradmin -p 
+
 echo "potteradmin      ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 
 #install necessary packages and enable qemu agent
