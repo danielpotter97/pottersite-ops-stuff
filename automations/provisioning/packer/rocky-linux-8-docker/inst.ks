@@ -80,8 +80,6 @@ kexec-tools
 
 #add potteradmin user 
 sudo useradd -m potteradmin -p 
-sudo sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
-sudo sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
 echo "potteradmin      ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 
 #install necessary packages and enable qemu agent
