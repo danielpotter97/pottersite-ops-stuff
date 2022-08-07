@@ -81,6 +81,13 @@ kexec-tools
 #add potteradmin user 
 useradd -m potteradmin -p 
 
+sed -i "s/.*RSAAuthentication.*/RSAAuthentication yes/g" /etc/ssh/sshd_config
+sed -i "s/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g" /etc/ssh/sshd_config
+sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sed -i "s/.*AuthorizedKeysFile.*/AuthorizedKeysFile\t\.ssh\/authorized_keys/g" /etc/ssh/sshd_config
+sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
+echo "potteradmin      ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+
 #install necessary packages and enable qemu agent
 yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
 sudo systemctl enable qemu-guest-agent
