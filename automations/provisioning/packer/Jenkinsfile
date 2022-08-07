@@ -48,7 +48,7 @@ pipeline {
 
         stage('cleanup') {
             steps{
-              cleanWs()
+              sh "sudo rm -rf ${path}" 
             }
         }
     }
