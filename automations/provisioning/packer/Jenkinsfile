@@ -28,7 +28,8 @@ pipeline {
         stage('Add ssh passwd to kikcstart'){
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
-                    sh "sudo sed -i 's/rootpw/rootpw $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks" 
+                    sh "sudo sed -i 's/rootpw/rootpw $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks"
+                    sh "sudo sed -i 's//usr/sbin/useradd -m potteradmin -p //usr/sbin/useradd -m potteradmin -p $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks" 
                 }
             }
         }

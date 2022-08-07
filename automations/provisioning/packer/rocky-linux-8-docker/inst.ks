@@ -78,9 +78,11 @@ kexec-tools
 
 %post
 
-# sudo
-yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
+#add potteradmin user 
+/usr/sbin/useradd -m potteradmin -p 
 
+#install necessary packages and enable qemu agent
+yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
 sudo systemctl enable qemu-guest-agent
 sudo systemctl start qemu-guest-agent
 
