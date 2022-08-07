@@ -1,6 +1,6 @@
 def path = "/home/automations/provisioning/terraform" 
 
-ipeline {
+pipeline {
     agent any
     tools {
     terraform "terraform"
