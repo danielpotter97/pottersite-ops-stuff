@@ -70,11 +70,7 @@
           "sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin",
           "sudo systemctl enable --now docker",
           "dnf install -y epel-release",
-          "dnf install -y ansible",
-          "sudo sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config",
-          "echo 'DenyUsers root' | sudo tee -a /etc/ssh/sshd_config",
-          "echo 'AllowUsers potteradmin' | sudo tee -a /etc/ssh/sshd_config",
-          "sudo sed -i 's/#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config"
+          "dnf install -y ansible"  
         ],
         "only": ["proxmox"]
       }
