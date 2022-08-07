@@ -1,4 +1,6 @@
-pipeline {
+def path = "/home/automations/provisioning/terraform" 
+
+ipeline {
     agent any
     tools {
     terraform "terraform"
@@ -8,12 +10,13 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
+               sh 'sudo cp -R ${WORKSPACE}/automations /home'
             }
         }
         stage('Add vmname to resource field') {
             steps{
                 sh """#!/bin/bash
-                sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' automations/provisioning/terraform/clone-vm.tf
+                sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' ${path}/clone-vm.tf
                 """
                 
             }
@@ -21,18 +24,18 @@ pipeline {
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
-                sh 'cd automations/provisioning/terraform && terraform fmt'
+                sh "cd ${path} && terraform fmt"
             }
         }
         stage('terraform Init') {
             steps{
-                sh 'cd automations/provisioning/terraform && terraform init'
+                sh "cd ${path} && terraform init"
             }
         }
 
         stage('terraform plan') {
             steps{
-                dir ("automations/provisioning/terraform"){
+                dir ("${path}"){
                     sh """terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
@@ -50,7 +53,7 @@ pipeline {
 
         stage('terraform apply') {
             steps{
-                dir ("automations/provisioning/terraform"){
+                dir ("${path}"){
                     sh """terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
