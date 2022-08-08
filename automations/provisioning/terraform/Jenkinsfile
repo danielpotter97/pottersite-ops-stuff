@@ -10,7 +10,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
-               sh 'sudo cp -R ${WORKSPACE}/automations /home'
+               sh 'sudo cp -R ${WORKSPACE}/automations /home/potteradmin'
             }
         }
         stage('Add vmname to resource field') {
