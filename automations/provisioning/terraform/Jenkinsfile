@@ -16,7 +16,7 @@ pipeline {
         stage('Add vmname to resource field') {
             steps{
                 sh """#!/bin/bash
-                sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' ${path}/clone-vm.tf
+                sudo sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' ${path}/clone-vm.tf
                 """
                 
             }
