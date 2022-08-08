@@ -1,4 +1,4 @@
-def path = automations/provisioning/terraform/
+def path = "/${WORKSPACE}/automations/provisioning/terraform"
 
 pipeline {
     agent any
