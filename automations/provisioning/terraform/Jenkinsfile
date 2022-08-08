@@ -1,4 +1,4 @@
-def path = "/${WORKSPACE}/automations/provisioning/terraform"
+def path = "/automations/provisioning/terraform"
 
 pipeline {
     agent any
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Add vmname to resource field') {
             steps{
-                dir("${path}"){
+                dir("${WORKSPACE}/${path}"){
                     sh """#!/bin/bash
                     sudo sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' clone-vm.tf
                     """
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('terraform format check') {
             steps{
-                dir("${path}"){
+                dir("${WORKSPACE}/${path}"){
                     sh "PATH=/bin/terraform"
                     sh "sudo terraform fmt"
                 }
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('terraform Init') {
             steps{
-                dir("${path}"){
+                dir("${WORKSPACE}/${path}"){
                     sh "sudo terraform init"
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
 
         stage('terraform plan') {
             steps{
-                dir("${path}"){
+                dir("${WORKSPACE}/${path}"){
                     sh """terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
@@ -58,7 +58,7 @@ pipeline {
 
         stage('terraform apply') {
             steps{
-                 dir("${path}"){
+                 dir("${WORKSPACE}/${path}"){
                     sh """terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
