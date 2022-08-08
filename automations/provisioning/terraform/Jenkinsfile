@@ -24,19 +24,19 @@ pipeline {
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
-                sh "cd ${path} && terraform fmt"
+                sh "cd ${path} && sudo terraform fmt"
             }
         }
         stage('terraform Init') {
             steps{
-                sh "cd ${path} && terraform init"
+                sh "cd ${path} && sudo terraform init"
             }
         }
 
         stage('terraform plan') {
             steps{
                 dir ("${path}"){
-                    sh """terraform plan \
+                    sh """sudo terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
                             -var 'vmname=$params.vmname' \
@@ -54,7 +54,7 @@ pipeline {
         stage('terraform apply') {
             steps{
                 dir ("${path}"){
-                    sh """terraform apply \
+                    sh """sudo terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
                          -var 'vmname=$params.vmname' \
@@ -79,7 +79,7 @@ pipeline {
 
         stage('cleanup') {
             steps{
-              cleanWs()
+              sh "sudo rm -rf ${path}" 
             }
         }
     }
