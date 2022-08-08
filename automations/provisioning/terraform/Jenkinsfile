@@ -1,4 +1,4 @@
-def path = "/home/potteradmin/automations/provisioning/terraform" 
+def path = "/home/automations/provisioning/terraform" 
 
 pipeline {
     agent any
@@ -10,7 +10,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
-               sh 'sudo cp -R ${WORKSPACE}/automations /home/potteradmin'
+               sh 'sudo cp -R ${WORKSPACE}/automations /home'
             }
         }
         stage('Add vmname to resource field') {
@@ -24,19 +24,19 @@ pipeline {
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
-                sh "cd ${path} && sudo terraform fmt"
+                sh "cd ${path} && terraform fmt"
             }
         }
         stage('terraform Init') {
             steps{
-                sh "cd ${path} && sudo terraform init"
+                sh "cd ${path} && terraform init"
             }
         }
 
         stage('terraform plan') {
             steps{
                 dir ("${path}"){
-                    sh """sudo terraform plan \
+                    sh """terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
                             -var 'vmname=$params.vmname' \
@@ -54,7 +54,7 @@ pipeline {
         stage('terraform apply') {
             steps{
                 dir ("${path}"){
-                    sh """sudo terraform apply \
+                    sh """terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
                          -var 'vmname=$params.vmname' \
