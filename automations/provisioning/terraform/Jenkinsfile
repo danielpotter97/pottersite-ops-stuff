@@ -23,7 +23,7 @@ pipeline {
         }
         stage('terraform format check') {
             steps{
-                 dir("${path}"){
+                dir("${path}"){
                     sh "PATH=/bin/terraform"
                     sh "sudo terraform fmt"
                 }
