@@ -24,12 +24,12 @@ pipeline {
         stage('terraform format check') {
             steps{
                 sh "PATH=/bin/terraform"
-                sh "cd ${path} && terraform fmt"
+                sh "cd ${path} && sudo terraform fmt"
             }
         }
         stage('terraform Init') {
             steps{
-                sh "cd ${path} && terraform init"
+                sh "cd ${path} && sudo terraform init"
             }
         }
 
