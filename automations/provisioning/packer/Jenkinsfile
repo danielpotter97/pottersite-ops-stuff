@@ -29,7 +29,7 @@ pipeline {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
                     sh "sudo sed -i 's/rootpw/rootpw $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks"
-                    sh "sudo sed -i 's/user --name=potteradmin --groups=wheel --password= --iscrypted/user --name=potteradmin --groups=wheel --password=$ssh_passwd --iscrypted/g' ${path}/rocky-linux-8-docker/inst.ks" 
+                    sh "sudo sed -i 's/user --name=potteradmin --groups=wheel --password= --iscrypted/user --name=potteradmin --groups=wheel --password=$ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks" 
                 }
             }
         }

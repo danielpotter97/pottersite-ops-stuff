@@ -10,7 +10,7 @@ keyboard --vckeymap=hu --xlayouts='hu'
 # System language
 lang en_US.UTF-8
 
-user --name=potteradmin --groups=wheel --password= --iscrypted
+user --name=potteradmin --groups=wheel --password=
 
 # Network information
 network --bootproto=dhcp --device=ens18 --noipv6 --activate
