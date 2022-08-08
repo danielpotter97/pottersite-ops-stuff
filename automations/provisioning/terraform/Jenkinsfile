@@ -45,7 +45,8 @@ pipeline {
                             -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
                             -var 'desc=$params.desc' \
                             -no-color \
-                            -out=plan.out
+                            -out=plan.out \
+                            clone-vm.tf
                     """
                 }
             }
@@ -62,7 +63,8 @@ pipeline {
                          -var 'memory=$params.memory' \
                          -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
                          -var 'desc=$params.desc' \
-                         --auto-approve
+                         --auto-approve \
+                         clone-vm.tf
                     """
                     sh "terraform output"
                 }
