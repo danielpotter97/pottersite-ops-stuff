@@ -1,3 +1,4 @@
+def path = automations/provisioning/terraform/
 
 pipeline {
     agent any
@@ -13,27 +14,32 @@ pipeline {
         }
         stage('Add vmname to resource field') {
             steps{
-                sh 'ls -latrh'
-                sh """#!/bin/bash
-                sudo sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' clone-vm.tf
-                """
-                
+                dir("${path}"){
+                    sh """#!/bin/bash
+                    sudo sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' clone-vm.tf
+                    """
+                }
             }
         }
         stage('terraform format check') {
             steps{
-                sh "PATH=/bin/terraform"
-                sh "sudo terraform fmt"
+                 dir("${path}"){
+                    sh "PATH=/bin/terraform"
+                    sh "sudo terraform fmt"
+                }
             }
         }
         stage('terraform Init') {
             steps{
-                sh "sudo terraform init"
+                dir("${path}"){
+                    sh "sudo terraform init"
+                }
             }
         }
 
         stage('terraform plan') {
             steps{
+                dir("${path}"){
                     sh """terraform plan \
                             -var-file='credentials.tfvars' \
                             -var 'vmid=$params.vmid' \
@@ -46,13 +52,13 @@ pipeline {
                             -out=plan.out \
                             clone-vm.tf
                     """
-                
+                }
             }
         }
 
         stage('terraform apply') {
             steps{
-                
+                 dir("${path}"){
                     sh """terraform apply \
                          -var-file='credentials.tfvars' \
                          -var 'vmid=$params.vmid' \
@@ -65,7 +71,7 @@ pipeline {
                          clone-vm.tf
                     """
                     sh "terraform output"
-                
+                }
             }
         }
 
