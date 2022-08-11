@@ -71,7 +71,8 @@
           "sudo systemctl enable --now docker",
           "dnf install -y epel-release",
           "echo 'DenyUsers root' | sudo tee -a /etc/ssh/sshd_config",
-          "sudo usermod -aG docker wheel potteradmin"
+          "sudo usermod -a -G docker potteradmin",
+          "sudo usermod -a -G wheel potteradmin"
         ],
         "only": ["proxmox"]
       }
