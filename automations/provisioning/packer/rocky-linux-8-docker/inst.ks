@@ -10,8 +10,6 @@ keyboard --vckeymap=hu --xlayouts='hu'
 # System language
 lang en_US.UTF-8
 
-user --name=potteradmin --groups=wheel --password=
-
 # Network information
 network --bootproto=dhcp --device=ens18 --noipv6 --activate
 #repo --name=AppStream --mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&repo=AppStream-$releasever
@@ -79,12 +77,13 @@ kexec-tools
 
 %post
 
-
+useradd -m potteradmin
+echo somepasswd | passwd --stdin potteradmin
 echo "potteradmin      ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
-
 #install necessary packages and enable qemu agent
 yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
 sudo systemctl enable qemu-guest-agent
 sudo systemctl start qemu-guest-agent
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
 %end
