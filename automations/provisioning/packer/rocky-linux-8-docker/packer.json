@@ -49,7 +49,7 @@
         "http_bind_address": "192.168.0.21",
         "http_port_min": 8802,
         "http_port_max": 8802,
-        "ssh_username": "potteradmin",
+        "ssh_username": "root",
         "ssh_password": "{{user `ssh_passwd`}}",
         "ssh_port": 22,
         "ssh_timeout": "20m",
