@@ -37,7 +37,7 @@ pipeline {
         stage('Build packer file') {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){  
-                    sh """PACKER_LOG=1 packer build \
+                    sh """packer build \
                          -var-file='${path}/credentials.json' \
                          -var 'ssh_passwd=$ssh_passwd' \
                          ${path}/rocky-linux-8-docker/packer.json
