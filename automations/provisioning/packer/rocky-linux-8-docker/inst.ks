@@ -84,5 +84,7 @@ echo "potteradmin      ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 yum -y install curl wget unzip python3 python3-libselinux qemu-guest-agent
 sudo systemctl enable qemu-guest-agent
 sudo systemctl start qemu-guest-agent
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+systemctl restart sshd
 
 %end
