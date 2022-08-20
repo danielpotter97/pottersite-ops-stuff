@@ -15,12 +15,12 @@ pipeline {
         stage('Validate packer file') {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
-                    sh """packer validate \
+                    sh '''packer validate \
                         -var-file='${path}/credentials.json' \
                         -var 'ssh_passwd=$params.ssh_passwd' \
                         ${path}/rocky-linux-8-docker/packer.json
             
-                    """
+                    '''
                 }
             }
         }
@@ -28,8 +28,8 @@ pipeline {
         stage('Add ssh passwd to kikcstart'){
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
-                    sh "sudo sed -i 's/rootpw/rootpw $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks"
-                    sh "sudo sed -i 's/echo somepasswd | passwd --stdin potteradmin/echo $ssh_passwd | passwd --stdin potteradmin/g' ${path}/rocky-linux-8-docker/inst.ks" 
+                    sh 'sudo sed -i 's/rootpw/rootpw $ssh_passwd/g' ${path}/rocky-linux-8-docker/inst.ks'
+                    sh 'sudo sed -i 's/echo somepasswd | passwd --stdin potteradmin/echo $ssh_passwd | passwd --stdin potteradmin/g' ${path}/rocky-linux-8-docker/inst.ks'
                 }
             }
         }
@@ -37,11 +37,11 @@ pipeline {
         stage('Build packer file') {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){  
-                    sh """packer build \
+                    sh '''packer build \
                          -var-file='${path}/credentials.json' \
                          -var 'ssh_passwd=$ssh_passwd' \
                          ${path}/rocky-linux-8-docker/packer.json
-                    """
+                    '''
                 }
             }
         }
