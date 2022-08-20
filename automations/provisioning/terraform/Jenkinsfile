@@ -10,6 +10,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
+               export TF_LOG=”DEBUG”
             }
         }
        
@@ -28,6 +29,8 @@ pipeline {
                 }
             }
         }
+
+
 
         stage('terraform plan') {
             steps{
