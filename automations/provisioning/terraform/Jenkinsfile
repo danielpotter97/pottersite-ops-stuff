@@ -10,7 +10,7 @@ pipeline {
            steps{
                cleanWs()
                checkout scm
-               export TF_LOG=”DEBUG”
+               sh 'export TF_LOG=”DEBUG”'
             }
         }
        
