@@ -12,15 +12,7 @@ pipeline {
                checkout scm
             }
         }
-        stage('Add vmname to resource field') {
-            steps{
-                dir("${WORKSPACE}/${path}"){
-                    sh """#!/bin/bash
-                    sudo sed -i 's/resource "proxmox_vm_qemu" ""/resource "proxmox_vm_qemu" "$params.vmname"/g' clone-vm.tf
-                    """
-                }
-            }
-        }
+       
         stage('terraform format check') {
             steps{
                 dir("${WORKSPACE}/${path}"){
