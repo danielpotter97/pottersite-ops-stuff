@@ -72,7 +72,8 @@
           "dnf install -y epel-release",
           "echo 'DenyUsers root' | sudo tee -a /etc/ssh/sshd_config",
           "sudo usermod -a -G docker potteradmin",
-          "sudo usermod -a -G wheel potteradmin"
+          "sudo usermod -a -G wheel potteradmin",
+          "sudo sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config"
         ],
         "only": ["proxmox"]
       }
