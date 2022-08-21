@@ -39,7 +39,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     onboot = true 
 
     # VM OS Settings
-    clone = "pottersite-template-01"
+    clone = "pottersite-template01"
    
     # VM System Settings
     agent = 1
