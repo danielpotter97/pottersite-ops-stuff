@@ -90,7 +90,7 @@ source "proxmox" "pottersite-template01" {
     boot_wait = "5s"
 
     # PACKER Autoinstall Settings
-    http_directory = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/http/" 
+    http_directory = "/home/automations/provisioning/packer/ubuntu-22-docker/http/" 
     # (Optional) Bind IP Address and Port
 
     http_bind_address = "192.168.0.21"
@@ -132,7 +132,7 @@ build {
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
-        source = "/home/automations/provisioning/packer/ubuntu-server-22-04-docker/files/99-pve.cfg"
+        source = "/home/automations/provisioning/packer/ubuntu-22-docker/files/99-pve.cfg"
         destination = "/tmp/99-pve.cfg"
     }
 
