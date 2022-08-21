@@ -27,7 +27,7 @@ pipeline {
         stage('Build packer file') {
             steps{
                 sh ("""packer build \
-                        -var-file='${path}/credentials.pkr.hcl' \
+                    -var-file='${path}/credentials.pkr.hcl' \
                     ${path}/ubuntu-22-docker/ubuntu-22-docker.pkr.hcl
                 """)
             }
