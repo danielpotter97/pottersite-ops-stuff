@@ -16,7 +16,7 @@ pipeline {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
                     sh ("""packer validate \
-                        -var-file='${path}/credentials.json' \
+                        -var-file='${path}/credentials.pkr.hcl' \
                         -var 'ssh_passwd=$params.ssh_passwd' \
                         ${path}/rocky-linux-8-docker/packer.json
             
@@ -38,7 +38,7 @@ pipeline {
             steps{
                 withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){  
                     sh ("""packer build \
-                         -var-file='${path}/credentials.json' \
+                         -var-file='${path}/credentials.pkr.hcl' \
                          -var 'ssh_passwd=$ssh_passwd' \
                          ${path}/rocky-linux-8-docker/packer.json
                     """)
