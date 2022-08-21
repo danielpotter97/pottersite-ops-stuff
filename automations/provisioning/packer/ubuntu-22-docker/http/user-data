@@ -12,6 +12,7 @@ autoinstall:
   packages:
     - qemu-guest-agent
     - sudo
+    - cloud-init
   storage:
     layout:
       name: direct
