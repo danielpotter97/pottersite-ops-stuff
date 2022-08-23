@@ -14,11 +14,13 @@ pipeline {
 
         stage('Validate packer file') {
             steps{
+               withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
                 sh ("""packer validate \
                     -var-file='${path}/credentials.pkr.hcl' \
+                    -var 'ssh_passwd=$ssh_passwd' \\
                     ${path}/ubuntu-22-docker/ubuntu-22-docker.pkr.hcl
                 """)
-                
+               }
             }
         }
 
@@ -26,10 +28,13 @@ pipeline {
 
         stage('Build packer file') {
             steps{
+               withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
                 sh ("""packer build \
                     -var-file='${path}/credentials.pkr.hcl' \
+                    -var 'ssh_passwd=$ssh_passwd' \
                     ${path}/ubuntu-22-docker/ubuntu-22-docker.pkr.hcl
                 """)
+               }
             }
         }
 
