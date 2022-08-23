@@ -68,7 +68,7 @@ pipeline {
             }
         }
 
-        /*
+        
         stage('Reboot VM') {
             steps {
                 sshagent(credentials : ['pve']) {
@@ -76,7 +76,7 @@ pipeline {
                 }
             }
         }
-        */
+        
 
     }
 
