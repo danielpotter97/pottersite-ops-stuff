@@ -31,6 +31,12 @@ autoinstall:
         # - or -
         # ssh_authorized_keys:
         #   - your-ssh-key
+    runcmd:
+      - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+      - sed -i -e '/^PasswordAuthentication/s/^.*$/PasswordAuthentication yes/' /etc/ssh/sshd_config
+      - sed -i -e '$aAllowUsers potteradmin' /etc/ssh/sshd_config
+      - sed -i -e '$aDenyUsers root' /etc/ssh/sshd_config
+      - restart ssh
   late-commands:
     - curtin in-target --target=/target -- systemctl start qemu-guest-agent
     - curtin in-target --target=/target -- systemctl enable qemu-guest-agent

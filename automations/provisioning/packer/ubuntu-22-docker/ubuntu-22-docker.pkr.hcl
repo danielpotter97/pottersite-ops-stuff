@@ -162,20 +162,5 @@ build {
             "sudo apt install ansible -y"
         ]
     }
-     # Add SSH key to authorized key
-    provisioner "shell" {
-        inline = [
-            "sudo echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1PLAFEKbjTZFsu/L+A/Stai93GT47gvrrI6TlhWKDroXQSIUtBMKlwTS/FRCHDxrSY/rNa1+/i5t1tnjxdzQa1nCGWlTJXeiGtYYfhSy+lU8KAqUJhCwyJfa+WGv4mNbx6QyohuEFoTVzyCbfvEnvTJhgwMF+VD9HGczVQHnF58syfzz6pjPuDJ6RE16O6SQCnSWv5SPEyxh/qjz/MzG6id8IHQPqkM1mV64ILVQ09vslK5e0mH85nEnOmaeJK6Vrd79/MfUvRgQVVcE2gzMhYQTUgESivqqVme55rDK1Y5wXyKEGekxJuiPPdnr12HYPEVJR9YCYIXqsjG4CNARtqdyZOOX7Bt/NzVDDE44SH3Vvfu7jEt48y6ekgPJoz+6HNWz8C4+lcKdU+LzDgQAamaxDQhf4P+JrDTUNGyBnizIo4+cREwDoSerMmaP56f9SMTctUVmC8QjzjXAYo+xBZ2CwprHLOV41O3HH6kj7fYYWOrBrnkulAjanxDRBFeM= potteradmin@jenkins01.pottersite.local > /home/potteradmin/.ssh/authorized_keys"
-        ]
-    }
-
-    # Disable password authentication
-    provisioner "shell" {
-        inline = [
-            "sudo sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config",
-            "echo 'DenyUsers ubuntu,root' | sudo tee -a /etc/ssh/sshd_config",
-            "sudo sed -i 's/^#PermitRootLogin no /PermitRootLogin no/' /etc/ssh/sshd_config"
-        ]
-    }
   
 }
