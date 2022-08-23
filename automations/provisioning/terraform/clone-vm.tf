@@ -66,7 +66,4 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     ipconfig0 = var.ip
     nameserver = "192.168.0.1"
 
-    ciuser = "potteradmin"
-
-
 }
