@@ -68,13 +68,15 @@ pipeline {
             }
         }
 
-         stage('Reboot VM') {
+        /*
+        stage('Reboot VM') {
             steps {
                 sshagent(credentials : ['pve']) {
                     sh "ssh root@192.168.0.20 qm reboot $params.vmid"
                 }
             }
         }
+        */
 
     }
 

@@ -40,6 +40,9 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
 
     # VM OS Settings
     clone = "pottersite-template01"
+
+    os_type = "cloud-init"
+
    
     # VM System Settings
     agent = 1
@@ -62,7 +65,12 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     }
 
     # VM Cloud-Init Settings
-    os_type = "cloud-init"
+
+    lifecycle {
+        ignore_changes = [
+             network,
+        ]
+    }
     ipconfig0 = var.ip
     nameserver = "192.168.0.1"
 
