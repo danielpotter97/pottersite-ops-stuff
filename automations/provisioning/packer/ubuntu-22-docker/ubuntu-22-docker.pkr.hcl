@@ -16,6 +16,11 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
+variable "ssh_passwd" {
+    type = string
+    sensitive = true
+}
+
 # Resource Definiation for the VM Template
 source "proxmox" "pottersite-template01" {
  
@@ -100,7 +105,7 @@ source "proxmox" "pottersite-template01" {
     ssh_username = "potteradmin"
 
     # (Option 1) Add your Password here
-    ssh_password = "ubuntu"
+    ssh_password = "${var.ssh_passwd}"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
     #ssh_private_key_file = "/home/potteradmin/.ssh/id_rsa"
