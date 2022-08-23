@@ -64,6 +64,11 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
         model  = "virtio"
     }
 
+    disk {
+        size            = "50G"
+        type            = "virtio"
+        storage         = "local-lvm"
+    }
     # VM Cloud-Init Settings
 
     lifecycle {
