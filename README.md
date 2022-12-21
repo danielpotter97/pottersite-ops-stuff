@@ -2,16 +2,17 @@
 This repository contains the configurations of my home infrastructure applications/automations.
 Most of the applications are installed/administired with DevOps philosophy and tools. 
 
-Servers:
+**Servers**
 - HP Elitedesk 800 G3 (I5-6500 4c/4t, 32GB RAM, 256GB SSD)
 
 Architecture
 
-TOP LEVEL
+**TOP LEVEL**
 
-LOW LEVEL
+**LOW LEVEL**
+Database server instead of container 
 
-Applications
+**Applications**
 
 Docker - for application runtime
 
@@ -23,7 +24,7 @@ Portainer - for container mangament
 
 Registry - To storing security scanned 3rd party images before using it.
 
-Jellyfin - for home media
+Jellyfin - for films/movies
 
 qbittorrent - to manage torrents (ONLY LEGALLY DOWNLOADED LINUX IMAGES)
 
