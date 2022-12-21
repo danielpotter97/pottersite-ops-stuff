@@ -2,8 +2,7 @@
 This is the repo of my home server components.
 
 Servers
-- HP Z420 workstation with 32GB ECC RAM + 4C/8T Xeon processor
-- Asrock Q1900M DIY NAS with 3TB storage for data's
+HP Elitedesk 800 G3 (I5-6500 4c/4t, 32GB RAM, 256GB SSD)
 
 Environments
 
