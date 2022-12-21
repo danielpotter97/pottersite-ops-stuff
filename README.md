@@ -1,24 +1,32 @@
-# pottersite-home-server
-This is the repo of my home server components.
+# pottersite-ops-stuff
+This repository contains the configurations of my home infrastructure applications/automations.
+Most of the applications are installed/administired with DevOps philosophy and tools. 
 
-Servers:
+**Servers**
 - HP Elitedesk 800 G3 (I5-6500 4c/4t, 32GB RAM, 256GB SSD)
-
-Environments
 
 Architecture
 
-Applications
+**TOP LEVEL**
+
+**LOW LEVEL**
+Database server instead of container 
+
+**Applications**
 
 Docker - for application runtime
 
-Jenkins - for automation
+Jenkins - for automation on a separated VM
 
-Ansible - for 
+Ansible - for automating configuration tasks on the servers.
 
-Portainer - for container mangament
+Portainer - for container mangament 
 
-Jellyfin - for home media
+Registry - To storing security scanned 3rd party images before using it.
+
+Jellyfin - for films/movies
+
+qbittorrent - to manage torrents (ONLY LEGALLY DOWNLOADED LINUX IMAGES)
 
 
 
