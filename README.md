@@ -1,8 +1,8 @@
 # pottersite-home-server
 This is the repo of my home server components.
 
-Servers
-HP Elitedesk 800 G3 (I5-6500 4c/4t, 32GB RAM, 256GB SSD)
+Servers:
+- HP Elitedesk 800 G3 (I5-6500 4c/4t, 32GB RAM, 256GB SSD)
 
 Environments
 
