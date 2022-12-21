@@ -1,4 +1,4 @@
-# pottersite-home-server
+# pottersite-ops-stuff
 This is the repo of my home server components.
 
 Servers:
