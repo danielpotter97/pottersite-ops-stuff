@@ -1,1 +1,13 @@
-configuration-as-code
+antisamy-markup-formatter:latest
+build-timeout:latest
+configuration-as-code:latest
+credentials-binding:latest
+git:latest
+github-branch-source:latest
+pipeline-github-lib:latest
+pipeline-stage-view:latest
+ssh-slaves:latest
+timestamper:latest
+workflow-aggregator:latest
+ws-cleanup:latest
+blue-ocean:latest
