@@ -18,8 +18,8 @@ jenkins:
   remotingSecurity:
     enabled: true
 
-  security:
-    queueItemAuthenticator:
-      authenticators:
-        - global:
+security:
+  queueItemAuthenticator:
+    authenticators:
+      - global:
           strategy: triggeringUsersAuthorizationStrategy
