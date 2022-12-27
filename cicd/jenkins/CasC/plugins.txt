@@ -10,5 +10,5 @@ ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
-blue-ocean:latest
+blueocean:latest
 authorize-project:latest
