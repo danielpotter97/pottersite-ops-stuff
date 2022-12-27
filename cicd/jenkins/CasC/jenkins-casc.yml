@@ -12,8 +12,25 @@ jenkins:
   authorizationStrategy:
     globalMatrix:
       grantedPermissions:
-        - "Overall/Administer:admin"
-        - "Overall/Read:authenticated"
+        - "View/Delete:authenticated"
+        - "View/Read:authenticated"
+        - "View/Configure:authenticated"
+        - "View/Create:authenticated"
+        - "Job/Read:authenticated"
+        - "Job/Build:authenticated"
+        - "Job/Configure:authenticated"
+        - "Job/Create:authenticated"
+        - "Job/Delete:authenticated"
+        - "Job/Discover:authenticated"
+        - "Job/Move:authenticated"
+        - "Job/Workspace:authenticated"
+        - "Job/Cancel:authenticated"
+        - "Run/Delete:authenticated"
+        - "Run/Replay:authenticated"
+        - "Run/Update:authenticated"
+        - "SCM/Tag:authenticated"
+        - "Overall/Read:anonymous"
+        - "Overall/Administer:authenticated"
 
   remotingSecurity:
     enabled: true
