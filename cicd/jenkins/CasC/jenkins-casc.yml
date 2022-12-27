@@ -8,4 +8,8 @@ jenkins:
         # create a user called admin
         - id: "potteradmin"
           password: ${JENKINS_PW}
-  authorizationStrategy: loggedInUsersCanDoAnything
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
