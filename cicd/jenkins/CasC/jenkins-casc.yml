@@ -8,15 +8,18 @@ jenkins:
         # create a user called admin
         - id: "potteradmin"
           password: ${JENKINS_PW}
+
   authorizationStrategy:
     globalMatrix:
-      permissions:
+      grantedPermissions:
         - "Overall/Administer:admin"
         - "Overall/Read:authenticated"
-    remotingSecurity:
-      enabled: true
+
+  remotingSecurity:
+    enabled: true
+
   security:
-  queueItemAuthenticator:
-    authenticators:
-      - global:
+    queueItemAuthenticator:
+      authenticators:
+        - global:
           strategy: triggeringUsersAuthorizationStrategy
