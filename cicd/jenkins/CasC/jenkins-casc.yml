@@ -7,5 +7,5 @@ jenkins:
       users:
         # create a user called admin
         - id: "potteradmin"
-          password: "admin"
+          password: ${JENKINS_PW}
   authorizationStrategy: loggedInUsersCanDoAnything
