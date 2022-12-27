@@ -11,3 +11,4 @@ timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
 blue-ocean:latest
+authorize-project:latest
