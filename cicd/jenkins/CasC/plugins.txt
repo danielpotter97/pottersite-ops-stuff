@@ -20,5 +20,3 @@ workflow-aggregator:latest
 ws-cleanup:latest
 blueocean:latest
 authorize-project:latest
-terraform:1.0.10
-packer:1.5
