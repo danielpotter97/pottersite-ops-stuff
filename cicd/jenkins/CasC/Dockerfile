@@ -25,9 +25,8 @@ apt-get install vim -y
 RUN wget https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_darwin_amd64.zip
 RUN unzip packer_1.8.5_darwin_amd64.zip
 RUN mv packer /usr/local/bin/
-RUN packer --version 
 RUN wget https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
 RUN unzip terraform_1.3.6_linux_amd64.zip
 RUN mv terraform /usr/local/bin/
-RUN terraform --version 
+
 
