@@ -1,9 +1,24 @@
 FROM jenkins/jenkins:2.333-jdk11
 USER root
+# Install Docker
 RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
   && tar xzvf docker-17.04.0-ce.tgz \
   && mv docker/docker /usr/local/bin \
   && rm -r docker docker-17.04.0-ce.tgz
+#Install Packer
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - \
+  && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+  && sudo apt-get update && sudo apt-get install packer
+#Install Terraform
+RUN sudo apt-get update && sudo apt-get install -y gnupg software-properties-common \
+ && wget -O- https://apt.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+  && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/apt/sources.list.d/hashicorp.list \
+  && apt update \
+  && sudo apt-get install terraform
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/jenkins-casc.yml
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
