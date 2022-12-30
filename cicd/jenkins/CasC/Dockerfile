@@ -6,22 +6,20 @@ RUN curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz
   && tar xzvf docker-17.04.0-ce.tgz \
   && mv docker/docker /usr/local/bin \
   && rm -r docker docker-17.04.0-ce.tgz
-#Install Packer
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg |  apt-key add - 
-RUN apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" 
-RUN apt-get update &&  apt-get install packer
-#Install Terraform
-RUN  apt-get update &&  apt-get install -y gnupg software-properties-common 
-RUN wget -O- https://apt.releases.hashicorp.com/gpg | \
-    gpg --dearmor | \
-     tee /usr/share/keyrings/hashicorp-archive-keyring.gpg 
-RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-    tee /etc/apt/sources.list.d/hashicorp.list 
-RUN apt update 
-RUN  apt-get install terraform
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/jenkins-casc.yml
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 COPY jenkins-casc.yml /var/jenkins_home/jenkins-casc.yml
+
+#Install Packer
+FROM ubuntu:latest
+RUN wget https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_darwin_amd64.zip
+RUN unzip packer_1.8.5_darwin_amd64.zip
+RUN mv packer /usr/local/bin/
+RUN terraform --version 
+RUN wget https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
+RUN unzip terraform_1.3.6_linux_amd64.zip
+RUN mv terraform /usr/local/bin/
+RUN terraform --version 
+
