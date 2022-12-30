@@ -20,9 +20,9 @@ apt-get install wget -y && \
 # vim
 apt-get install vim -y
 # packer
-RUN export PACKER_RELEASE="1.8.3"
-RUN wget https://releases.hashicorp.com/packer/${PACKER_RELEASE}/packer_${PACKER_RELEASE}_linux_amd64.zip
-RUN unzip packer_${PACKER_RELEASE}_linux_amd64.zip
+
+RUN wget https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_amd64.zip
+RUN unzip packer_1.8.3_linux_amd64.zip
 RUN mv packer /usr/local/bin
 # terraform
 RUN wget https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
