@@ -81,6 +81,7 @@ source "proxmox" "pottersite-template01" {
     cloud_init_storage_pool = "local-lvm"
     
     
+    boot_wait = "5s"
     # PACKER Boot Commands
     boot_command = [
         "c",
@@ -91,7 +92,7 @@ source "proxmox" "pottersite-template01" {
     ]
 
 
-    boot_wait = "15s"
+    
 
     # PACKER Autoinstall Settings
     http_directory = "vm-image-creation/packer/ubuntu-22-docker/http/" 
