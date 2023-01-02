@@ -1,6 +1,14 @@
 # Ubuntu Server jammy
 # ---
 # Packer Template to create an Ubuntu Server (jammy) on Proxmox
+packer {
+  required_plugins {
+    proxmox = {
+      version = " >= 1.1.0"
+      source  = "github.com/hashicorp/proxmox"
+    }
+  }
+}
 
 # Variable Definitions
 variable "proxmox_api_url" {
@@ -82,13 +90,17 @@ source "proxmox" "pottersite-template01" {
     
     
    # PACKER Boot Commands
-   boot_command = [
-      "c",
-      "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ",
-      "<enter><wait>",
-      "initrd /casper/initrd<enter><wait>",
-      "boot<enter>"
+    boot      = "c"
+    boot_wait = "5s"
+    boot_command = [
+     "<esc><wait>",
+     "e<wait>",
+     "<down><down><down><end>",
+     "<bs><bs><bs><bs><wait>",
+     "autoinstall ds=nocloud-net;s=/cidata/ ---<wait>",
+     "<f10><wait>"
     ]
+
 
     unmount_iso = true
     
