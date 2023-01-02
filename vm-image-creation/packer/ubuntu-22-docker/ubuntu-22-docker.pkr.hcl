@@ -81,17 +81,15 @@ source "proxmox" "pottersite-template01" {
     cloud_init_storage_pool = "local-lvm"
     
     
-    boot_wait = "5s"
+    boot_wait = "3s"
     # PACKER Boot Commands
     boot_command = [
-        "c",
-        "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ",
-        "<enter><wait>",
-        "initrd /casper/initrd<enter><wait>",
-        "boot<enter>"
+        "<esc><wait><esc><wait><f6><wait><esc><wait>",
+	    "<bs><bs><bs><bs><bs>",
+	    "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
+	    "--- <enter>"
     ]
-
-
+    unmount_iso = true
     
 
     # PACKER Autoinstall Settings
