@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.333-slim-jdk8
+FROM jenkins/jenkins:2.333-slim-jdk17
 # Install Docker
 USER root
 RUN apt-get update && apt-get install -y tree nano curl sudo
