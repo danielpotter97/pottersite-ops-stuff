@@ -1,4 +1,4 @@
-def path = "/home/automations/provisioning/packer" 
+def path = "vm-image-creation/packer" 
 
 pipeline {
     agent any
@@ -8,16 +8,17 @@ pipeline {
            steps{
                cleanWs()
                checkout scm 
-               sh ("sudo cp -R ${WORKSPACE}/automations /home")
             }
         }
 
-        stage('Validate packer file') {
+        stage('Validate') {
             steps{
-               withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
+               withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_repo_cred', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
                 sh ("""packer validate \
-                    -var-file='${path}/credentials.pkr.hcl' \
-                    -var 'ssh_passwd=$ssh_passwd' \\
+                    -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
+                    -var 'proxmox_api_token_id'=$pve_user \
+                    -var 'proxmox_api_token_secret'=$pve_pass \
+                    -var 'ssh_passwd=$packer_ssh_passwd' \
                     ${path}/ubuntu-22-docker/ubuntu-22-docker.pkr.hcl
                 """)
                }
@@ -26,24 +27,19 @@ pipeline {
 
 
 
-        stage('Build packer file') {
+        stage('Build') {
             steps{
-               withCredentials([string(credentialsId: 'ssh', variable: 'ssh_passwd')]){
+               withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_repo_cred', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
                 sh ("""packer build \
-                    -var-file='${path}/credentials.pkr.hcl' \
-                    -var 'ssh_passwd=$ssh_passwd' \
+                    -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
+                    -var 'proxmox_api_token_id'=$pve_user \
+                    -var 'proxmox_api_token_secret'=$pve_pass \
+                    -var 'ssh_passwd=$packer_ssh_passwd' \
                     ${path}/ubuntu-22-docker/ubuntu-22-docker.pkr.hcl
-                """)
                }
             }
         }
 
-
-        stage('cleanup') {
-            steps{
-              sh "sudo rm -rf ${path}" 
-            }
-        }
     }
 
         
