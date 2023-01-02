@@ -2,7 +2,6 @@ def path = "vm-image-creation/packer"
 
 pipeline {
     agent any
-   
     stages {
        stage('Git checkout') {
            steps{
@@ -10,7 +9,6 @@ pipeline {
                checkout scm 
             }
         }
-
         stage('Validate') {
             steps{
                withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_repo_cred', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
@@ -24,9 +22,6 @@ pipeline {
                }
             }
         }
-
-
-
         stage('Build') {
             steps{
                withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_repo_cred', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
@@ -39,6 +34,5 @@ pipeline {
                }
             }
         }
-
     }      
 }
