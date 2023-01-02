@@ -15,10 +15,6 @@ variable "proxmox_api_url" {
     type = string
 }
 
-variable "proxmox_api_token_id" {
-    type = string
-}
-
 variable "proxmox_api_token_secret" {
     type = string
     sensitive = true
@@ -34,7 +30,7 @@ source "proxmox" "pottersite-template01" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
-    username = "${var.proxmox_api_token_id}"
+    username = root@pam!jenkins
     token = "${var.proxmox_api_token_secret}"
     # (Optional) Skip TLS Verification
     insecure_skip_tls_verify = true
