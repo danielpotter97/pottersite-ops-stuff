@@ -30,7 +30,7 @@ source "proxmox" "pottersite-template01" {
  
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
-    username = root@pam!jenkins
+    username = "root@pam!jenkins"
     token = "${var.proxmox_api_token_secret}"
     # (Optional) Skip TLS Verification
     insecure_skip_tls_verify = true
