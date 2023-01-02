@@ -98,7 +98,7 @@ source "proxmox" "pottersite-template01" {
     http_directory = "vm-image-creation/packer/ubuntu-22-docker/http/" 
     # (Optional) Bind IP Address and Port
 
-    http_bind_address = "192.168.0.21"
+    http_bind_address = "192.168.0.100"
     http_port_min = 8802
     http_port_max = 8802
 
