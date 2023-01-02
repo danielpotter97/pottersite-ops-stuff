@@ -81,14 +81,16 @@ source "proxmox" "pottersite-template01" {
     cloud_init_storage_pool = "local-lvm"
     
     
-    boot_wait = "3s"
-    # PACKER Boot Commands
+   # PACKER Boot Commands
     boot_command = [
-        "<esc><wait><esc><wait><f6><wait><esc><wait>",
-	    "<bs><bs><bs><bs><bs>",
-	    "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
-	    "--- <enter>"
+        "<esc><wait><esc><wait>",
+        "<f6><wait><esc><wait>",
+        "<bs><bs><bs><bs><bs>",
+        "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
+        "--- <enter>"
     ]
+    boot = "c"
+    boot_wait = "5s"
     unmount_iso = true
     
 
