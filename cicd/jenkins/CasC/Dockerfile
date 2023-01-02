@@ -21,8 +21,8 @@ apt-get install wget -y && \
 apt-get install vim -y
 # packer
 
-RUN wget https://releases.hashicorp.com/packer/1.7.7/packer_1.7.7_linux_amd64.zip
-RUN unzip packer_1.7.7_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip
+RUN unzip packer_1.7.0_linux_amd64.zip
 RUN mv packer /usr/local/bin
 # terraform
 RUN wget https://releases.hashicorp.com/terraform/1.3.6/terraform_1.3.6_linux_amd64.zip
