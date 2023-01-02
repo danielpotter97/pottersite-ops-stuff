@@ -32,14 +32,14 @@ source "proxmox" "pottersite-template01" {
     insecure_skip_tls_verify = true
     
     # VM General Settings
-    node = "pve"
-    vm_id = "101"
+    node = "pve1"
+    vm_id = "200"
     vm_name = "pottersite-template01"
     template_description = "Ubuntu Server Template"
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
+    iso_file = "local:iso/ubuntu-22.04.1-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04-live-server-amd64.iso"
