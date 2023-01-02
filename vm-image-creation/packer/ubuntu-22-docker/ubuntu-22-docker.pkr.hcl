@@ -57,7 +57,7 @@ source "proxmox" "pottersite-template01" {
 
     disks {
         disk_size = "20G"
-        format = "qcow2"
+        format = "raw"
         storage_pool = "local-lvm"
         storage_pool_type = "lvm"
         type = "virtio"
