@@ -36,6 +36,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]){ 
                     dir("${path}"){
                         sh """terraform plan \
+                                -var 'proxmox_api_token_secret'=$pve_pass \
                                 -var 'vmid=$params.vmid' \
                                 -var 'vmname=$params.vmname' \
                                 -var 'cores=$params.cores' \
@@ -55,6 +56,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]){ 
                     dir("${path}"){
                         sh """terraform apply \
+                             -var 'proxmox_api_token_secret'=$pve_pass \
                              -var 'vmid=$params.vmid' \
                              -var 'vmname=$params.vmname' \
                              -var 'cores=$params.cores' \
