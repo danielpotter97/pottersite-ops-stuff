@@ -20,3 +20,4 @@ workflow-aggregator:latest
 ws-cleanup:latest
 blueocean:latest
 authorize-project:latest
+ssh-agent:latest
