@@ -57,7 +57,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
 
     scsihw  = "virtio-scsi-pci"
     bootdisk = "virtio0"
-    boot = "order=net0;virtio0;ide0;ide2"
+    boot = "any"
 
     network {
         bridge = "vmbr0"
