@@ -97,8 +97,6 @@ source "proxmox" "pottersite-template01" {
 
     boot = "c"
     boot_wait = "15s"
-
-    unmount_iso = true
     
 
     # PACKER Autoinstall Settings
