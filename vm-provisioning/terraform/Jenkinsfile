@@ -1,7 +1,9 @@
-def path = "/automations/provisioning/terraform"
+def path = "vm-provisioning/terraform"
 
 pipeline {
-    agent any
+    agent {
+        label "Jenkins host ssh"
+    }
     tools {
     terraform "terraform"
     }
@@ -16,7 +18,7 @@ pipeline {
        
         stage('terraform format check') {
             steps{
-                dir("${WORKSPACE}/${path}"){
+                dir("${path}"){
                     sh "PATH=/bin/terraform"
                     sh "sudo terraform fmt"
                 }
@@ -24,7 +26,7 @@ pipeline {
         }
         stage('terraform Init') {
             steps{
-                dir("${WORKSPACE}/${path}"){
+                dir("${path}"){
                     sh "sudo terraform init"
                 }
             }
@@ -34,48 +36,50 @@ pipeline {
 
         stage('terraform plan') {
             steps{
-                dir("${WORKSPACE}/${path}"){
-                    sh """terraform plan \
-                            -var-file='credentials.tfvars' \
-                            -var 'vmid=$params.vmid' \
-                            -var 'vmname=$params.vmname' \
-                            -var 'cores=$params.cores' \
-                            -var 'memory=$params.memory' \
-                            -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
-                            -var 'desc=$params.desc' \
-                            -no-color \
-                            -out=plan.out
-                    """
+                withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]){ 
+                    dir("${path}"){
+                        sh """terraform plan \
+                                -var 'vmid=$params.vmid' \
+                                -var 'vmname=$params.vmname' \
+                                -var 'cores=$params.cores' \
+                                -var 'memory=$params.memory' \
+                                -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
+                                -var 'desc=$params.desc' \
+                                -no-color \
+                                -out=plan.out
+                        """
+                    }
                 }
             }
         }
 
         stage('terraform apply') {
             steps{
-                 dir("${WORKSPACE}/${path}"){
-                    sh """terraform apply \
-                         -var-file='credentials.tfvars' \
-                         -var 'vmid=$params.vmid' \
-                         -var 'vmname=$params.vmname' \
-                         -var 'cores=$params.cores' \
-                         -var 'memory=$params.memory' \
-                         -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
-                         -var 'desc=$params.desc' \
-                         --auto-approve
-                    """
-                    sh "terraform output"
+                withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]){ 
+                    dir("${path}"){
+                        sh """terraform apply \
+                             -var 'vmid=$params.vmid' \
+                             -var 'vmname=$params.vmname' \
+                             -var 'cores=$params.cores' \
+                             -var 'memory=$params.memory' \
+                             -var 'ip=ip=$params.ip/24,gw=192.168.0.1' \
+                             -var 'desc=$params.desc' \
+                             --auto-approve
+                        """
+                        sh "terraform output"
+                    }
                 }
-            }
+            }   
         }
 
         
-        stage('Reboot VM') {
-            steps {
-                sshagent(credentials : ['pve']) {
-                    sh "ssh root@192.168.0.20 qm reboot $params.vmid"
-                }
-            }
-        }
+        //stage('Reboot VM') {
+        //    steps {
+        //        sshagent(credentials : ['pve']) {
+        //            sh "ssh root@192.168.0.20 qm reboot $params.vmid"
+        //        }
+        //    }
+        //}
         
 
     }
