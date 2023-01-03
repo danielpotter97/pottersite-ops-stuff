@@ -14,13 +14,6 @@ terraform {
     }
 }
 
-variable "proxmox_api_url" {
-    type = string
-}
-
-variable "proxmox_api_token_id" {
-    type = string
-}
 
 variable "proxmox_api_token_secret" {
     type = string
@@ -28,8 +21,8 @@ variable "proxmox_api_token_secret" {
 
 provider "proxmox" {
 
-    pm_api_url = var.proxmox_api_url
-    pm_api_token_id = var.proxmox_api_token_id
+    pm_api_url = "https://192.168.0.100:8006/api2/json"
+    pm_api_token_id = "root@pam!jenkins"
     pm_api_token_secret = var.proxmox_api_token_secret
     pm_timeout = 1800
 
