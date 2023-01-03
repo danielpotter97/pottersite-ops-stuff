@@ -86,17 +86,15 @@ source "proxmox" "pottersite-template01" {
     
     
    # PACKER Boot Commands
-    boot      = "c"
-    boot_wait = "5s"
-    boot_command = [
-     "<esc><wait>",
-     "e<wait>",
-     "<down><down><down><end>",
-     "<bs><bs><bs><bs><wait>",
-     "autoinstall ds=nocloud-net;s=/cidata/ ---<wait>",
-     "<f10><wait>"
+   boot_command = [
+        "<esc><wait><esc><wait>",
+        "<f6><wait><esc><wait>",
+        "<bs><bs><bs><bs><bs>",
+        "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ",
+        "--- <enter>"
     ]
-
+    boot = "c"
+    boot_wait = "5s"
 
     unmount_iso = true
     
