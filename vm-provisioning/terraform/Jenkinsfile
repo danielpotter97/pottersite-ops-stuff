@@ -73,11 +73,9 @@ pipeline {
 
         
         stage('Reboot VM') {
-            steps {
-                sshagent(credentials : ['pve1_ssh']) {
-                    sh "ssh root@192.168.0.100 qm reboot $params.vmid"
-                }
-            }
+            build job: 'restart proxmox vm', parameters: [
+                string(name: 'vmid', value: "$params.vmid")
+             ]
         }
         
 
