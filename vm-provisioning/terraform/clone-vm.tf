@@ -30,7 +30,7 @@ variable "desc" {
 resource "proxmox_vm_qemu" "proxmox_vm"  {
     
     #VM general settings
-    target_node = "pve"
+    target_node = "pve1"
     vmid = var.vmid
     name = "${var.vmname}"
     desc = var.desc
