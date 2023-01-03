@@ -73,9 +73,11 @@ pipeline {
 
         
         stage('Reboot VM') {
+           steps{ 
             build job: 'restart proxmox vm', parameters: [
                 string(name: 'vmid', value: "$params.vmid")
-             ]
+            ]
+           }
         }
         
 
