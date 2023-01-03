@@ -1,7 +1,6 @@
 def path = "vm-image-creation/packer" 
 
 pipeline {
-    agent Jenkins host ssh
     stages {
        sshagent(credentials: ['jenkins_host_ssh']) { 
         stage('Git checkout') {
