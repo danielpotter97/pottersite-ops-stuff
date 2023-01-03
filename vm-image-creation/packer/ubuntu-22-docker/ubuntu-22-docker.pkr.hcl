@@ -94,7 +94,7 @@ source "proxmox" "pottersite-template01" {
         "--- <enter>"
     ]
     boot = "c"
-    boot_wait = "5s"
+    boot_wait = "15s"
 
     unmount_iso = true
     
