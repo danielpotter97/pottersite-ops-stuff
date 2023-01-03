@@ -1,19 +1,21 @@
 def path = "vm-image-creation/packer" 
 
 pipeline {
-    agent any
+    agent {
+        label "Jenkins host ssh"
+    }
     stages {
-       sshagent(credentials: ['jenkins_host_ssh']) { 
+       
         stage('Git checkout') {
             steps{
                 cleanWs()
                 checkout scm 
                 }
             }
-        }
+        
          stage('Validate') {
             steps{
-                sshagent(credentials: ['jenkins_host_ssh']) { 
+                
                     withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
                      sh ("""packer validate \
                          -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
@@ -24,10 +26,10 @@ pipeline {
                     }
                 }
             }   
-         }
+         
          stage('Build') {
              steps{
-                sshagent(credentials: ['jenkins_host_ssh']) { 
+               
                     withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
                      sh ("""packer build \
                          -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
@@ -38,7 +40,7 @@ pipeline {
                     }
                 }
             }
-        }
+        
        
     }   
 }
