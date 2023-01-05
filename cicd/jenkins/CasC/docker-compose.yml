@@ -11,6 +11,8 @@ services:
     restart: always
     volumes:
       - jenkins_home:/var/jenkins_home
+    environment:
+      JENKINS_PW: /run/secrets/jenkins_password
 
 secrets:
   jenkins_password:
