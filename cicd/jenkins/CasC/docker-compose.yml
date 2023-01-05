@@ -6,13 +6,13 @@ services:
     ports:
       - 8080:8080
       - 50000:50000
-    secrets:
-      - jenkins_password
     restart: always
     volumes:
       - jenkins_home:/var/jenkins_home
     environment:
       - JENKINS_PW=/run/secrets/jenkins_password
+    secrets:
+      - jenkins_password
 
 secrets:
   jenkins_password:
