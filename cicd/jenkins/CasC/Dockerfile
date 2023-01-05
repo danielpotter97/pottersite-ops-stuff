@@ -1,4 +1,5 @@
 FROM jenkins/jenkins:2.333-slim-jdk17
+USER root
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/jenkins-casc.yml
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
