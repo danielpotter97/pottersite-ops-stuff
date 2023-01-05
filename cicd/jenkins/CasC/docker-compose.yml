@@ -9,8 +9,8 @@ services:
     secrets:
       - jenkins_password
     restart: always
-  volumes:
-    - jenkins_home:/var/jenkins_home
+    volumes:
+      - jenkins_home:/var/jenkins_home
 
 secrets:
   jenkins_password:
