@@ -11,12 +11,6 @@ services:
       - jenkins_home:/var/jenkins_home
     environment:
       - JENKINS_PW: /run/secrets/jenkins_password
-    entrypoint:
-      - /bin/sh
-      - -c
-      - |
-        read -r JENKINS_PW < /run/secrets/jenkins_password
-        exec $$0 "$$@"
     secrets:
       - jenkins_password
 
