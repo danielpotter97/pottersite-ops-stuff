@@ -7,10 +7,8 @@ services:
       - 8080:8080
       - 50000:50000
     restart: always
-    entrypoint: source /data/entrypoint_overwrited.sh
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /:/data/
     environment:
       JENKINS_PW: /run/secrets/jenkins_password
     secrets:
