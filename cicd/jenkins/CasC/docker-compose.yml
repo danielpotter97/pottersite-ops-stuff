@@ -8,10 +8,10 @@ services:
       - 8080:8080
       - 50000:50000
     restart: always
-    command:
-      - bash -c "export JENKINS_PW=$$(cat /var/run/secrets/jenkins_passowrd)  &&  source /entrypoint.sh "
     volumes:
       - jenkins_home:/var/jenkins_home
+    environment:
+      JENKINS_PW_FILE: /run/secrets/jenkins_password
     secrets:
       - jenkins_password
 
