@@ -1,0 +1,32 @@
+---
+- name: mount module demo
+  hosts: all
+  become: true
+  vars:
+    mynfs: "192.168.0.106:/datastore"
+    mountpoint: "/mnt/datastore"
+    permission: "0777"
+    myopts: "rw,sync"
+  tasks:
+    - name: utility present debian-like
+      ansible.builtin.apt:
+        name:
+          - nfs-common
+          - nfs4-acl-tools
+        state: present
+
+    - name: check mountpoint exist
+      ansible.builtin.file:
+        path: "{{ mountpoint }}"
+        state: directory
+        mode: "{{ permission }}"
+        owner: root
+        group: root
+
+    - name: mount network share
+      ansible.posix.mount:
+        src: "{{ mynfs }}"
+        path: "{{ mountpoint }}"
+        fstype: nfs
+        opts: "{{ myopts }}"
+        state: mounted
