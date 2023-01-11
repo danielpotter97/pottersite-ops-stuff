@@ -1,0 +1,30 @@
+def path = "cicd/jenkins/ansible" 
+def inventory_path = "cicd/jenkins/ansible/inventory" 
+
+pipeline {
+    agent {
+        label "Jenkins host ssh"
+    }
+    stages {
+       
+        stage('Git checkout') {
+            steps{
+                cleanWs()
+                checkout scm 
+                }
+            }
+        
+        stage('Mount NFS to all server') {
+            steps{
+                sh "ansible-playbook -i ${inventory_path}/inventory.ini ${path}/mount-nfs.yml"
+                }
+            }      
+        
+        stage('CleanUp'){
+            steps{
+              cleanWs()  
+            }
+        }
+       
+    }   
+}
