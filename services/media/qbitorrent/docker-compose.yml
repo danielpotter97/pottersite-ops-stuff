@@ -5,8 +5,8 @@ services:
     image: lscr.io/linuxserver/deluge:latest
     container_name: qbittorrent
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=117
+      - PGID=999
       - TZ=Europe/Budapest
     volumes:
       - /mnt/datastore/Server/docker_volumes/deluge:/config
