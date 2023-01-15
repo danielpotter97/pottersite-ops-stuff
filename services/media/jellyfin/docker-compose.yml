@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   jellyfin:
-    image: jellyfin/jellyfin
+    image: linuxserver/jellyfin:amd64-10.8.8-1-ls193
     container_name: jellyfin
     environment:
       - PUID=1000
