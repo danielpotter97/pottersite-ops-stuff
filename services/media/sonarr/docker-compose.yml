@@ -7,12 +7,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Rome
+      - TZ=Europe/Budapest
     volumes:
-      - ./sonarr_config:/config
-      - /media/anime:/anime
-      - /media/tvshows:/tvshows
-      - /media/transmission/downloads/complete:/downloads/complete
+      - /mnt/datastore/Server/docker_volumes/sonarr/sonarr_config:/config
+      - /mnt/datastore/Personal/Series:/tvshows
+      - /mnt/datastore/Personal/Torrents:/downloads/complete
     ports:
       - 8989:8989
     restart: unless-stopped
