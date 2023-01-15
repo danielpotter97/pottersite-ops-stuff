@@ -2,8 +2,8 @@
 version: "3.1"
 services:
   qbittorrent:
-    image: lscr.io/linuxserver/deluge:latest
-    container_name: qbittorrent
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
     environment:
       - PUID=0
       - PGID=0
@@ -12,7 +12,7 @@ services:
       - /mnt/datastore/Server/docker_volumes/deluge:/config
       - /mnt/datastore/Personal/Torrents:/downloads
     ports:
-      - 8112:8112
-      - 6881:6881
-      - 6881:6881/udp
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
     restart: unless-stopped
