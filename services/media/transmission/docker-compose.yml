@@ -4,10 +4,15 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/transmission:latest
     container_name: transmission
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     environment:
       - PUID=0
       - PGID=0
       - TZ=Europe/Budapest
+      - TRANSMISSION_PEER_PORT_RANDOM_ON_START=true
+      - TRANSMISSION_PORT_FORWARDING_ENABLED=true
     volumes:
       - /mnt/datastore/Server/docker_volumes/transmission:/config
       - /mnt/datastore/Personal/Torrents:/downloads
