@@ -10,8 +10,8 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /mnt/datastore/Server/docker_volumes/jellyfin/config:/config
-      - /mnt/datastore/Personal/Torrents:/data/tvshows
-      - /mnt/datastore/Personal/Torrents:/data/movies
+      - /mnt/datastore/Personal/Torrents/Series:/data/tvshows
+      - /mnt/datastore/Personal/Torrents/Movies:/data/movies
     ports:
       - 8096:8096
       - 8920:8920 #optional
