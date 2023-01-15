@@ -2,7 +2,7 @@
 version: "3.1"
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
+    image: linuxserver/jellyfin:amd64-nightly
     container_name: jellyfin
     environment:
       - PUID=1000
