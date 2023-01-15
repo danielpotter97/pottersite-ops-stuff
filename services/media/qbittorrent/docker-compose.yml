@@ -2,7 +2,7 @@
 version: "3.2"
 services:
   qbittorrent:
-    image: docker pull linuxserver/qbittorrent:amd64-4.5.0-libtorrentv1
+    image: linuxserver/qbittorrent:amd64-4.5.0-libtorrentv1
     container_name: qbittorrent
     dns:
       - 8.8.8.8
