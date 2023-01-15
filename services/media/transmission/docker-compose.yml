@@ -5,8 +5,8 @@ services:
     image: lscr.io/linuxserver/transmission:latest
     container_name: transmission
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Europe/Budapest
     volumes:
       - /mnt/datastore/Server/docker_volumes/transmission:/config
