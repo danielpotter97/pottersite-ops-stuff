@@ -9,7 +9,7 @@ services:
       - PGID=0
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/Server/docker_volumes/deluge:/config
+      - /mnt/datastore/Server/docker_volumes/transmission:/config
       - /mnt/datastore/Personal/Torrents:/downloads
     ports:
       - 9091:9091
