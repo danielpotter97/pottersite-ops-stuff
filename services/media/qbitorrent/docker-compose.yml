@@ -13,7 +13,7 @@ services:
       - /mnt/datastore/Server/docker_volumes/deluge:/config
       - /mnt/datastore/Personal/Torrents:/downloads
     ports:
-      - 8080:8080
+      - 8112:8112
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
