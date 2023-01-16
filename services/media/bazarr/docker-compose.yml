@@ -1,0 +1,17 @@
+---
+version: "3.5"
+services:
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+    volumes:
+      - /mnt/datastore/Server/docker_volumes/bazarr/config:/config
+      - /mnt/datastore/Personal/Torrents/Movies:/movies #optional
+      - /mnt/datastore/Personal/Torrents/Series:/tvshows #optional
+    ports:
+      - 6767:6767
+    restart: unless-stopped
