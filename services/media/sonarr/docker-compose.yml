@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/Server/docker_volumes/sonarr/config:/config
+      - /mnt/datastore/Server/docker_volumes/sonarr:/config
       - /mnt/datastore/Personal/Torrents/Series:/tvshows
       - /mnt/datastore/Personal/Torrents/Series:/downloads/complete
     ports:
