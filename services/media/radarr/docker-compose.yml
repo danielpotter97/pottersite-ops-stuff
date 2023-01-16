@@ -1,0 +1,17 @@
+---
+version: "3.5"
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+    volumes:
+      - /mnt/datastore/Server/docker_volumes/radarr:/config
+      - /mnt/datastore/Personal/Torrents/Movies:/downloads/complete
+      - /mnt/datastore/Personal/Torrents/Movies:/movies
+    ports:
+      - 7878:7878
+    restart: unless-stopped
