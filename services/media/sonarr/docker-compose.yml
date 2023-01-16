@@ -10,8 +10,8 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /mnt/datastore/Server/docker_volumes/sonarr/config:/config
-      - /mnt/datastore/Personal/Series:/tvshows
-      - /mnt/datastore/Personal/Torrents:/downloads/complete
+      - /mnt/datastore/Personal/Torrents/Series:/tvshows
+      - /mnt/datastore/Personal/Torrents/Series:/downloads/complete
     ports:
       - 8989:8989
     restart: unless-stopped
