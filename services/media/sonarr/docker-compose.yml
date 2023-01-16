@@ -4,6 +4,11 @@ services:
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+      - 1.0.0.1
     environment:
       - PUID=1000
       - PGID=1000
