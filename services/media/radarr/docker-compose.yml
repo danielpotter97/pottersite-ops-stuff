@@ -15,7 +15,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /mnt/datastore/Server/docker_volumes/radarr:/config
-      - /mnt/datastore/Personal/Torrents/Movies:/downloads/complete
+      - /mnt/datastore/Personal/Torrents:/downloads/complete
       - /mnt/datastore/Personal/Torrents/Movies:/movies
     ports:
       - 7878:7878
