@@ -14,7 +14,7 @@ services:
     volumes:
       - /mnt/datastore/Server/docker_volumes/sonarr:/config
       - /mnt/datastore/Personal/Torrents/Series:/tvshows
-      - /mnt/datastore/Personal/Torrents:/downloads/complete
+      - /mnt/datastore/Personal/Torrents:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
