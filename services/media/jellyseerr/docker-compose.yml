@@ -1,0 +1,13 @@
+---
+version: "3.5"
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - TZ=Europe/Budapest
+    ports:
+      - 5055:5055
+    volumes:
+      - /mnt/datastore/server/docker_volumes/jellyseerr/:/app/config
+    restart: unless-stopped
