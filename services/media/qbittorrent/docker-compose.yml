@@ -2,7 +2,7 @@
 version: "3.2"
 services:
   qbittorrent:
-    image: linuxserver/qbittorrent:amd64-4.3.0202008230347-7042-4539c679dubuntu18.04.1-ls81
+    image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
     dns:
       - 8.8.8.8
