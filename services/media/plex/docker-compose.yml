@@ -3,7 +3,6 @@ version: "3.2"
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
-    container_name: plex
     dns:
       - 1.0.0.1
       - 1.1.1.1
