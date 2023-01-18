@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - TZ=America/Budapest
     volumes:
-      - /mnt/datastore/Server/docker_volumes/overseerr:/config
+      - /mnt/datastore/server/docker_volumes/overseerr:/config
     ports:
       - 5055:5055
     restart: unless-stopped
