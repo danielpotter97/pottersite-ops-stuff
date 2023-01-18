@@ -1,5 +1,5 @@
 ---
-version: "3.1"
+version: "3.2"
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
@@ -24,4 +24,3 @@ services:
       - 32412:32412/udp
       - 32413:32413/udp
       - 32414:32414/udp
-    restart: unless-stopped
