@@ -15,7 +15,7 @@ pipeline {
         
         stage('Deploy') {
             steps{
-                sh "docker stack deploy --compose-file=${path}/docker-compose.yml ${path}"
+                sh "docker stack deploy --compose-file=${path}/docker-compose.yml $params.service"
                 }
             }      
         
