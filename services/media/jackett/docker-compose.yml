@@ -10,9 +10,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Budapest
-      - AUTO_UPDATE=true #optional
     volumes:
-      - /mnt/datastore/Server/docker_volumes/jackett/config:/config
+      - /mnt/datastore/server/docker_volumes/jackett:/config
 
     ports:
       - 9117:9117

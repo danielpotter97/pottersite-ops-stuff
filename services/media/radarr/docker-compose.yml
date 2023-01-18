@@ -12,9 +12,8 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/Server/docker_volumes/radarr:/config
-      - /mnt/datastore/Personal/Torrents:/downloads
-      - /mnt/datastore/Personal/Torrents/Movies:/movies
+      - /mnt/datastore/server/docker_volumes/radarr:/config
+      - /mnt/datastore/personal/:/data
     ports:
       - 7878:7878
     restart: unless-stopped
