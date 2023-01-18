@@ -1,0 +1,29 @@
+def path = "services/media/$params.service" 
+
+pipeline {
+    agent {
+        label "swarm_master"
+    }
+    stages {
+       
+        stage('Git checkout') {
+            steps{
+                cleanWs()
+                checkout scm 
+                }
+            }
+        
+        stage('Deploy') {
+            steps{
+                sh "docker stack deploy --compose-file=${path}/docker-compose.yml portainer"
+                }
+            }      
+        
+        stage('CleanUp'){
+            steps{
+              cleanWs()  
+            }
+        }
+       
+    }   
+}
