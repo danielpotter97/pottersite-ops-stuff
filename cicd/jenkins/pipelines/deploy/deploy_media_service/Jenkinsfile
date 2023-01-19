@@ -13,6 +13,12 @@ pipeline {
                 }
             }
         
+        stage('Create config folder if not exists') {
+            steps{
+                sh "mkdir -p /mnt/datastore/server/docker_volumes/$params.service"
+                }
+            }
+
         stage('Deploy') {
             steps{
                 sh "docker stack deploy --compose-file=${path}/docker-compose.yml $params.service"
