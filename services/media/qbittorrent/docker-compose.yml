@@ -2,7 +2,7 @@
 version: "3.2"
 services:
   qbittorrent:
-    image: crazymax/qbittorrent:4.1.9
+    image: linuxserver/qbittorrent:amd64-4.1.9.99201911190849-6738-0b055d8ubuntu18.04.1-ls54
     container_name: qbittorrent
     dns:
       - 8.8.8.8
