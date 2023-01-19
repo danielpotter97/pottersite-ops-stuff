@@ -1,0 +1,19 @@
+---
+version: "3.5"
+services:
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+
+    volumes:
+      - /mnt/datastore/server/docker_volumes/deluge:/config
+      - /mnt/datastore/personal/torrents:/downloads
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
