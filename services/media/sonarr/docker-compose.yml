@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   sonarr:
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr:latest
     container_name: sonarr
     dns:
       - 1.1.1.1
