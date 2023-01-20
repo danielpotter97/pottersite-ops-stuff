@@ -12,8 +12,11 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/server/docker_volumes/radarr:/config
+      - radarr-config:/config
       - /mnt/datastore/personal/:/data
     ports:
       - 7878:7878
     restart: unless-stopped
+
+volumes:
+  radarr-config:
