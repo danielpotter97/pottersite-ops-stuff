@@ -21,6 +21,5 @@ services:
       - 6881:6881/udp
     restart: unless-stopped
 
-    volumes:
-      qbittorrent-config:
-
+volumes:
+  qbittorrent-config:
