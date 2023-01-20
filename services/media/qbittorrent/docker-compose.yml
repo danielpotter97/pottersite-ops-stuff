@@ -13,10 +13,14 @@ services:
       - TZ=Europe/Budapest
       - WEBUI_PORT=8080
     volumes:
-      - /mnt/datastore/server/docker_volumes/qbittorrent:/config
+      - qbittorrent-config:/config
       - /mnt/datastore/personal/torrents:/downloads
     ports:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+
+    volumes:
+      qbittorrent-config:
+
