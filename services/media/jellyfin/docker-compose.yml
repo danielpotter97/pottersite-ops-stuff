@@ -9,7 +9,8 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/server/docker_volumes/jellyfin/:/config
+      - jellyfin-config:/config
+      - jellyfin-cache:/cache
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
     ports:
