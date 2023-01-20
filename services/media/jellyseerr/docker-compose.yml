@@ -9,5 +9,8 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /mnt/datastore/server/docker_volumes/jellyseerr/:/app/config
+      - jellyseerr-config:/app/config
     restart: unless-stopped
+
+volumes:
+  jellyseerr-config:
