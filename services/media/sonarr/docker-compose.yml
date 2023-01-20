@@ -12,8 +12,11 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/datastore/server/docker_volumes/sonarr:/config
+      - sonarr-config:/config
       - /mnt/datastore/personal/:/data
     ports:
       - 8989:8989
     restart: unless-stopped
+
+volumes:
+  sonarr-config:
