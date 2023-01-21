@@ -1,0 +1,14 @@
+- name: mount module demo
+  hosts: all
+  become: true
+  vars:
+    date: "{{ lookup('pipe', 'date +%Y%m%d-%H') }}"
+  tasks:
+    - name: compress all the files in tar.gz
+      archive:
+        path: "/var/lib/docker/volumes"
+        dest: "/tmp/backup-{{ date }}.tar.gz"
+        format: gz
+
+    - name: Move archive file from docker machines to nfs datastore
+      command: mv /tmp/backup-{{ date }}.tar.gz /mnt/datastore/server/backup
