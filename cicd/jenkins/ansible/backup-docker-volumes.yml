@@ -11,7 +11,7 @@
         format: gz
 
     - name: Move archive file from docker machines to nfs datastore
-      command: mv "/tmp/backup-{{ inventory_hostname }}-{{ date }}.tar.gz /mnt/datastore/server/backup
+      command: mv /tmp/backup-{{ inventory_hostname }}-{{ date }}.tar.gz /mnt/datastore/server/backup
 
     - name: Cleanup /tmp on remote machines
       command: rm -rf /tmp/backup-{{ inventory_hostname }}-{{ date }}.tar.gz
