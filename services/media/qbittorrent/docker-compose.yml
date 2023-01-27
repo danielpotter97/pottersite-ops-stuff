@@ -29,7 +29,7 @@ services:
 
 volumes:
   qbittorrent-config:
-    name: qbittorrent
+    driver: local
     driver_opts:
       type: "nfs"
       o: addr=192.168.0.106,nolock,soft,rw
