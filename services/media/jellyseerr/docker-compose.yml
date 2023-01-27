@@ -14,3 +14,4 @@ services:
 
 volumes:
   jellyseerr-config:
+    external: true
