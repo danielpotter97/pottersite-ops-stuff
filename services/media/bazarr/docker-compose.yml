@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - bazarr-config:/config
+      - /mnt/bazarr-config:/config
       - /mnt/datastore/personal/media:/data/media #optional
     ports:
       - 6767:6767

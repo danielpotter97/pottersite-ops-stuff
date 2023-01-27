@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - sonarr-config:/config
+      - /mnt/sonarr-config:/config
       - /mnt/datastore/personal/:/data
     ports:
       - 8989:8989
