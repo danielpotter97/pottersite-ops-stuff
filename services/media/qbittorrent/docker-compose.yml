@@ -15,7 +15,11 @@ services:
       - TZ=Europe/Budapest
       - WEBUI_PORT=8080
     volumes:
-      - qbittorrent-config:/config
+      - type: volume
+        source: qbittorrent-config
+        target: /config
+        volume:
+          nocopy: true
       - /mnt/datastore/personal/torrents:/downloads
     ports:
       - 8080:8080
