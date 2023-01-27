@@ -32,5 +32,5 @@ volumes:
     driver: local
     driver_opts:
       type: "nfs"
-      o: addr=192.168.0.106,nolock,soft,rw
-      device: ":/datastore/server/volumes/qbittorrent"
+      o: addr=192.168.0.106:/datastore,nolock,soft,rw
+      device: "/server/volumes/qbittorrent"
