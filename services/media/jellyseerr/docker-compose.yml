@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   jellyseerr:
-    image: fallenbagel/jellyseerr:1.2.1
+    image: fallenbagel/jellyseerr:1.0.2
     environment:
       - TZ=Europe/Budapest
     ports:
