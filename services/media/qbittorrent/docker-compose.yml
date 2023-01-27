@@ -27,5 +27,5 @@ volumes:
   qbittorrent-config:
     driver_opts:
       type: "nfs"
-      o: "addr=192.168.0.106:/datastore,nfsvers=4"
+      o: "addr=192.168.0.106,nfsvers=4"
       device: "/mnt/datastore/server/volumes/qbittorrent"
