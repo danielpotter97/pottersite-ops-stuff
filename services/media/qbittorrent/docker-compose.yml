@@ -33,4 +33,4 @@ volumes:
     driver_opts:
       type: "nfs"
       o: addr=192.168.0.106,nolock,soft,rw
-      device: ":/export/datastore/server/volumes/qbittorrent"
+      device: ":/datastore/server/volumes/qbittorrent"
