@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   radarr:
-    image: linuxserver/radarr
+    image: linuxserver/radarr:nightly-4.4.1.6897-ls436
     container_name: radarr
     dns:
       - 1.1.1.1
