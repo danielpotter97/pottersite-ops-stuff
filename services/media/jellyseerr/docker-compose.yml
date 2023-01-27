@@ -2,7 +2,7 @@
 version: "3.5"
 services:
   jellyseerr:
-    image: fallenbagel/jellyseerr:latest
+    image: fallenbagel/jellyseerr:1.0.2
     dns:
       - 1.1.1.1
       - 1.0.0.1
