@@ -1,12 +1,12 @@
 - name: mount module demo
-  hosts: all
+  hosts: docker-swarm-leader
   become: true
   vars:
     date: "{{ lookup('pipe', 'date +%Y%m%d-%H') }}"
   tasks:
     - name: compress all the files in tar.gz
       archive:
-        path: "/var/lib/docker/volumes"
+        path: "/gluster/volume"
         dest: "/tmp/backup-{{ inventory_hostname }}-{{ date }}.tar.gz"
         format: gz
 
