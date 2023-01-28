@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    image: louislam/uptime-kuma:latest
+    restart: always
+    volumes:
+      - /mnt/uptime-kuma:/app/data
+    ports:
+      - "80:3001"
+
+volumes:
+  uptime-kuma:
