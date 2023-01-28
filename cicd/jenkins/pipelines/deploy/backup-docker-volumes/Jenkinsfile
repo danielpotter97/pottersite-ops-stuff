@@ -18,7 +18,13 @@ pipeline {
             steps{
                 sh "ansible-playbook -i ${inventory_path}/inventory.ini ${path}/backup-docker-volumes.yml"
                 }
-            }      
+            }   
+
+        stage('Delete files older than 21 days') {
+            steps{
+                sh "find /mnt/datastore/server/backup -type f -mtime +21 -delete"
+                }
+            }       
         
         stage('CleanUp'){
             steps{
