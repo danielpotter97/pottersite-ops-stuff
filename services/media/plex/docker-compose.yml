@@ -2,7 +2,7 @@
 version: "3.2"
 services:
   plex:
-    image: plexinc/pms-docker:latest
+    image: linuxserver/plex:latest
     dns:
       - 1.0.0.1
       - 1.1.1.1
