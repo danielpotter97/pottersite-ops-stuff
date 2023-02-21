@@ -5,7 +5,7 @@ services:
     image: louislam/uptime-kuma:latest
     restart: always
     volumes:
-      - /mnt/uptime-kuma:/app/data
+      - /mnt/glusterfs/volume/uptime-kuma:/app/data
     ports:
       - "3001:3001"
 
