@@ -15,7 +15,7 @@ services:
         constraints:
           - node.role==worker
   cadvisor:
-    image: google/cadvisor:v0.37.5
+    image: google/cadvisor:latest
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
