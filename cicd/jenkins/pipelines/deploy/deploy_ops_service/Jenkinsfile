@@ -19,11 +19,11 @@ pipeline {
                 }
             }      
         
-        stage('CleanUp'){
-            steps{
-              cleanWs()  
-            }
-        }
+        //stage('CleanUp'){
+      //      steps{
+       //       cleanWs()  
+       //     }
+      //  }
        
     }   
 }
