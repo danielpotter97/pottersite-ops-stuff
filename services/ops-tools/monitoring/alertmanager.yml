@@ -1,0 +1,7 @@
+route:
+  receiver: telegram
+
+receivers:
+  - name: telegram
+    webhook_configs:
+      - url: "https://api.telegram.org/6093139664:AAFG40Bw1-Rnf0Kwqe3odFRYi0VweHLmB5c/sendMessage?chat_id=954066673&text={{ .CommonAnnotations.summary }}"
