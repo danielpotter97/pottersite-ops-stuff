@@ -1,0 +1,13 @@
+{
+    "iso_path": "local:iso/Rocky-9.1-x86_64-minimal.iso",
+    "iso_checksum": "sha256:2f00a30ccaf59c17d55d5037d29b1ab10820e191960ef9a07dd7d4b29e3a4a17",
+    "ssh_password_env": "SSH_PASSWORD",
+    "ssh_username": "potteradmin",
+    "timezone": "Europe/Budapest",
+    "keyboard_layout": "hu",
+    "language": "en_US",
+    "root_password_env": "ROOT_PASSWORD",
+    "http_directory": "http",
+    "output_directory": "output-iso",
+    "preseed_file": "preseed.cfg"
+  }
