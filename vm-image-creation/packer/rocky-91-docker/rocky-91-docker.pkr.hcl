@@ -114,3 +114,7 @@ source "proxmox" "rocky91-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
+
+    }
+  }
+}
