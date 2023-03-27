@@ -17,7 +17,7 @@ pipeline {
             steps{
                 
                     withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
-                     sh ("""packer validate \
+                     sh ("""packer validate -debug \
                          -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
                          -var 'proxmox_api_token_secret'=$pve_pass \
                          -var 'ssh_passwd'=$packer_ssh_passwd \
@@ -31,7 +31,7 @@ pipeline {
              steps{
                
                     withCredentials([usernamePassword(credentialsId: 'packer_ssh', passwordVariable: 'packer_ssh_passwd', usernameVariable: 'packer_user'), usernamePassword(credentialsId: 'ps_ops_pve1_api_key', passwordVariable: 'pve_pass', usernameVariable: 'pve_user')]) {
-                     sh ("""packer build \
+                     sh ("""packer build -debug \
                          -var 'proxmox_api_url'=https://192.168.0.100:8006/api2/json \
                          -var 'proxmox_api_token_secret'=$pve_pass \
                          -var 'ssh_passwd'=$packer_ssh_passwd \
