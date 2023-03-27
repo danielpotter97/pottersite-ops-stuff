@@ -79,7 +79,7 @@ source "proxmox" "rocky91-template01" {
   
   
     PACKER Boot Commands
-   oot_command = [
+  boot_command = [
       "<esc><wait>",
       "linux autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<wait>",
       "<enter><wait>"
