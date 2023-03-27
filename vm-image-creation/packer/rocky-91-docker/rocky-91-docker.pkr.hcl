@@ -4,7 +4,7 @@
 packer {
   required_plugins {
     proxmox = {
-      version = ">= 1.1.0"
+      version = " >= 1.1.0"
       source  = "github.com/hashicorp/proxmox"
     }
   }
@@ -114,7 +114,5 @@ source "proxmox" "rocky91-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
+}  
 
-    
-  }
-}
