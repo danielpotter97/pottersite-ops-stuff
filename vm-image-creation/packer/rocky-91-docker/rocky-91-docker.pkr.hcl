@@ -1,15 +1,6 @@
 # Rocky Linux 9.1
 # ---
 # Packer Template to create a Rocky Linux 9.1 on Proxmox
-packer {
-  required_plugins {
-    proxmox = {
-      version = " >= 1.1.0"
-      source  = "github.com/hashicorp/proxmox"
-    }
-  }
-}
-
 # Variable Definitions
 variable "proxmox_api_url" {
     type = string
@@ -37,7 +28,7 @@ source "proxmox" "rocky91-template01" {
     
     # VM General Settings
     node = "pve1"
-    vm_id = "201"
+    vm_id = "202"
     vm_name = "rocky91-template01"
     template_description = "Rocky Linux 9.1 Template"
 
