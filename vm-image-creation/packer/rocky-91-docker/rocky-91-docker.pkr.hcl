@@ -78,7 +78,7 @@ source "proxmox" "rocky91-template01" {
   cloud_init_storage_pool = "local-lvm"
   
   
-    PACKER Boot Commands
+  #PACKER Boot Commands
   boot_command = [
       "<esc><wait>",
       "linux autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<wait>",
