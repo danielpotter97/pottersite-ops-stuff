@@ -88,7 +88,7 @@ source "proxmox" "rocky91-template01" {
     
 
     # PACKER Autoinstall Settings
-    http_directory = "vm-image-creation/packer/rocky-91/http/"
+    http_directory = "vm-image-creation/packer/rocky-91-docker/http/"
     # (Optional) Bind IP Address and Port
 
     http_bind_address = "192.168.0.107"
