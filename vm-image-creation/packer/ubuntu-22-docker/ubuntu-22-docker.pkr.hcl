@@ -37,7 +37,7 @@ source "proxmox" "pottersite-template01" {
     
     # VM General Settings
     node = "pve1"
-    vm_id = "200"
+    vm_id = "201"
     vm_name = "pottersite-template01"
     template_description = "Ubuntu Server Template"
 
