@@ -34,7 +34,7 @@ source "proxmox" "rocky91-template01" {
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    iso_file = "local:iso/Rocky-9.1-x86_64-dvd1.iso"
+    iso_file = "local:iso/Rocky-9.1-x86_64-minimal.iso"
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://download.rockylinux.org/pub/rocky/9.1/isos/x86_64/Rocky-9.1-x86_64-dvd1.iso"
