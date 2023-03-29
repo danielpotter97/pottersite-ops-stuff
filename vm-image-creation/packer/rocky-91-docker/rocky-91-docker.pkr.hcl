@@ -88,7 +88,7 @@ source "proxmox" "rocky91-template01" {
     
 
     # PACKER Autoinstall Settings
-    http_directory = "vm-image-creation/packer/rocky-91/http/" 
+    http_directory = "vm-image-creation/packer/rocky-91/http/"
     # (Optional) Bind IP Address and Port
 
     http_bind_address = "192.168.0.107"
@@ -105,4 +105,33 @@ source "proxmox" "rocky91-template01" {
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"
-}   
+}
+
+build {
+
+    name = "rocky91-template01"
+    sources = ["source.proxmox.rocky91-template01"]
+
+    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
+    provisioner "shell" {
+        inline = [
+            "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
+            "sudo rm /etc/ssh/ssh_host_*",
+            "sudo truncate -s 0 /etc/machine-id",
+            "sudo cloud-init clean",
+            "sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg",
+            "sudo sync"
+        ]
+    }
+
+    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
+    provisioner "file" {
+        source = "vm-image-creation/packer/ubuntu-22-docker/files/99-pve.cfg"
+        destination = "/tmp/99-pve.cfg"
+    }
+
+    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #3
+    provisioner "shell" {
+        inline = [ "sudo cp /tmp/99-pve.cfg /etc/cloud/cloud.cfg.d/99-pve.cfg" ]
+    }
+}
