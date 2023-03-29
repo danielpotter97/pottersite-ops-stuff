@@ -1,6 +1,14 @@
 # Rocky Linux 9.1
 # ---
 # Packer Template to create a Rocky Linux 9.1 on Proxmox
+packer {
+  required_plugins {
+    proxmox = {
+      version = " >= 1.1.0"
+      source  = "github.com/hashicorp/proxmox"
+    }
+  }
+}
 # Variable Definitions
 variable "proxmox_api_url" {
     type = string
@@ -55,13 +63,13 @@ source "proxmox" "rocky91-template01" {
         format = "raw"
         storage_pool = "local-lvm"
         storage_pool_type = "lvm"
-        type = "virtio"
+        type = "scsi"
     }
 
     # VM CPU Settings
     cores = "1"
     cpu_type = "host"
-    
+
     # VM Memory Settings
     memory = "2048" 
 
