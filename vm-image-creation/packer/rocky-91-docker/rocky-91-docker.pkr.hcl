@@ -83,7 +83,7 @@ source "proxmox" "rocky91-template01" {
         "<enter><wait>"
     ]
 
-    boot = "cdrom"
+    boot = "c"
     boot_wait = "15s"
     
 
