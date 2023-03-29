@@ -60,6 +60,7 @@ source "proxmox" "rocky91-template01" {
 
     # VM CPU Settings
     cores = "1"
+    cpu_type = "host"
     
     # VM Memory Settings
     memory = "2048" 
