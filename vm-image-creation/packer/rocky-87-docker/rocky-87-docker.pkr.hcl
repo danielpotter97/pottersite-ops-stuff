@@ -99,7 +99,10 @@ source "proxmox" "rocky87-template01" {
     # PACKER Autoinstall Settings
     http_directory = "vm-image-creation/packer/rocky-87-docker/http/"
     # (Optional) Bind IP Address and Port
-
+    kickstart_file     = "http/{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg"
+    kickstart_vars = {
+      ssh_passwd = var.ssh_passwd
+    }
     http_bind_address = "192.168.0.107"
     http_port_min = 8803
     http_port_max = 8803
