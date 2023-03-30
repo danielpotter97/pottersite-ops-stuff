@@ -128,9 +128,9 @@ build {
         kickstart_file = "vm-image-creation/packer/rocky-87-docker/http/ks.cfg"
     # Note: The following variable definitions will be substituted
     # into the kickstart.cfg file during the build process
-    kickstart_vars = {
-      ssh_passwd = var.ssh_passwd
-    }
+        kickstart_vars = {
+          ssh_passwd = var.ssh_passwd
+        }
     }
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
