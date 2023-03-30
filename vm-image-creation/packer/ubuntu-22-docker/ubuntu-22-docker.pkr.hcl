@@ -20,10 +20,6 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
-source "file" "ks" {
-  content = file("ks.cfg")
-}
-
 variable "ssh_passwd" {
     type = string
     sensitive = true
@@ -106,9 +102,7 @@ source "proxmox" "pottersite-template01" {
     # PACKER Autoinstall Settings
     http_directory = "vm-image-creation/packer/ubuntu-22-docker/http/" 
     # (Optional) Bind IP Address and Port
-    kickstart_vars = {
-      ssh_passwd = var.ssh_passwd
-    }
+
     http_bind_address = "192.168.0.107"
     http_port_min = 8802
     http_port_max = 8802
