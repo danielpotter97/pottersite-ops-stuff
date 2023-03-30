@@ -99,10 +99,7 @@ source "proxmox" "rocky87-template01" {
     # PACKER Autoinstall Settings
     http_directory = "vm-image-creation/packer/rocky-87-docker/http/"
     # (Optional) Bind IP Address and Port
-    kickstart_file     = "http/{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg"
-    kickstart_vars = {
-      ssh_passwd = var.ssh_passwd
-    }
+   
     http_bind_address = "192.168.0.107"
     http_port_min = 8803
     http_port_max = 8803
@@ -119,10 +116,22 @@ source "proxmox" "rocky87-template01" {
     ssh_timeout = "20m"
 }
 
+
+
 build {
 
     name = "rocky87-template01"
     sources = ["source.proxmox.rocky87-template01"]
+
+    provisioner "kickstart" {
+    http_directory = "http"
+    kickstart_file = "http/ks.cfg"
+    # Note: The following variable definitions will be substituted
+    # into the kickstart.cfg file during the build process
+    kickstart_vars = {
+      ssh_passwd = var.ssh_passwd
+    }
+    }
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
