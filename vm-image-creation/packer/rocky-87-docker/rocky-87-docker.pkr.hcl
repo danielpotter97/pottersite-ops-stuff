@@ -124,8 +124,8 @@ build {
     sources = ["source.proxmox.rocky87-template01"]
 
     provisioner "kickstart" {
-    http_directory = "http"
-    kickstart_file = "http/ks.cfg"
+        http_directory = "vm-image-creation/packer/rocky-87-docker/http"
+        kickstart_file = "vm-image-creation/packer/rocky-87-docker/http/ks.cfg"
     # Note: The following variable definitions will be substituted
     # into the kickstart.cfg file during the build process
     kickstart_vars = {
