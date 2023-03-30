@@ -156,7 +156,13 @@ build {
             "curl -L 'https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose",
             "chmod +x /usr/local/bin/docker-compose",
             "systemctl enable docker.service",
-            "systemctl enable containerd.service"
+            "systemctl enable containerd.service",
+            "echo 'AllowUsers potteradmin' >> /etc/ssh/sshd_config",
+            "echo 'PermitRootLogin no' >> /etc/ssh/sshd_config",
+            "systemctl restart sshd
+
+# Set Hungarian Keyboard Layout
+localectl set-keymap hu
         ]
     }
 }
