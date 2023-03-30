@@ -159,10 +159,8 @@ build {
             "systemctl enable containerd.service",
             "echo 'AllowUsers potteradmin' >> /etc/ssh/sshd_config",
             "echo 'PermitRootLogin no' >> /etc/ssh/sshd_config",
-            "systemctl restart sshd
-
-# Set Hungarian Keyboard Layout
-localectl set-keymap hu
+            "systemctl restart sshd",
+            "localectl set-keymap hu"
         ]
     }
 }
