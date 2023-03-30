@@ -42,7 +42,7 @@ source "proxmox" "rocky87-template01" {
 
     # VM OS Settings
     # (Option 1) Local ISO File
-    iso_file = "local:iso/Rocky-8.7-x86_64-minimal.iso"
+    iso_file = "local:iso/Rocky-8.7-x86_64-dvd1.iso"
     # - or -
     # (Option 2) Download ISO
     # iso_url = "https://download.rockylinux.org/pub/rocky/8.7/isos/x86_64/Rocky-8.7-x86_64-dvd1.iso"
