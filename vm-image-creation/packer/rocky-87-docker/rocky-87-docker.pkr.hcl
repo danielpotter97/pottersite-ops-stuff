@@ -123,20 +123,6 @@ build {
     name = "rocky87-template01"
     sources = ["source.proxmox.rocky87-template01"]
 
-    
-
-    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
-    provisioner "shell" {
-        inline = [
-            "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
-            "sudo rm /etc/ssh/ssh_host_*",
-            "sudo truncate -s 0 /etc/machine-id",
-            "sudo cloud-init clean",
-            "sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg",
-            "sudo sync"
-        ]
-    }
-
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
         source = "vm-image-creation/packer/ubuntu-22-docker/files/99-pve.cfg"
@@ -151,6 +137,14 @@ build {
     provisioner "shell" {
         inline = [
             "yum install -y wget qemu-guest-agent cloud-utils-growpart gdisk",
+            "shred -u /etc/ssh/*_key /etc/ssh/*_key.pub",
+            "rm -f /var/run/utmp",
+            " >/var/log/lastlog",
+            " >/var/log/wtmp",
+            " >/var/log/btmp",
+            "rm -rf /tmp/* /var/tmp/*",
+            "unset HISTFILE; rm -rf /home/*/.*history /root/.*history",
+            "rm -f /root/*ks",
             "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo",
             "dnf -y install docker-ce docker-ce-cli containerd.io",
             "curl -L 'https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose",
