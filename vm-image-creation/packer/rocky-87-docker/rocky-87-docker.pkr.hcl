@@ -136,25 +136,20 @@ build {
 
     provisioner "shell" {
         inline = [
-            "yum install -y wget qemu-guest-agent cloud-utils-growpart gdisk",
-            "shred -u /etc/ssh/*_key /etc/ssh/*_key.pub",
-            "rm -f /var/run/utmp",
-            " >/var/log/lastlog",
-            " >/var/log/wtmp",
-            " >/var/log/btmp",
-            "rm -rf /tmp/* /var/tmp/*",
-            "unset HISTFILE; rm -rf /home/*/.*history /root/.*history",
-            "rm -f /root/*ks",
-            "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo",
-            "dnf -y install docker-ce docker-ce-cli containerd.io",
-            "curl -L 'https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose",
-            "chmod +x /usr/local/bin/docker-compose",
-            "systemctl enable docker.service",
-            "systemctl enable containerd.service",
-            "echo 'AllowUsers potteradmin' >> /etc/ssh/sshd_config",
-            "echo 'PermitRootLogin no' >> /etc/ssh/sshd_config",
-            "systemctl restart sshd",
-            "localectl set-keymap hu"
+            "sudo yum install -y wget qemu-guest-agent cloud-utils-growpart gdisk",
+            "sudo shred -u /etc/ssh/*_key /etc/ssh/*_key.pub",
+            "sudo unset HISTFILE; rm -rf /home/*/.*history /root/.*history",
+            "sudo rm -f /root/*ks",
+            "sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo",
+            "sudo dnf -y install docker-ce docker-ce-cli containerd.io",
+            "sudo curl -L 'https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose",
+            "sudo chmod +x /usr/local/bin/docker-compose",
+            "sudo systemctl enable docker.service",
+            "sudo systemctl enable containerd.service",
+            "sudo echo 'AllowUsers potteradmin' >> /etc/ssh/sshd_config",
+            "sudo echo 'PermitRootLogin no' >> /etc/ssh/sshd_config",
+            "sudo systemctl restart sshd",
+            "sudo localectl set-keymap hu"
         ]
     }
 }
