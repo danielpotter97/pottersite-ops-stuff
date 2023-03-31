@@ -145,9 +145,6 @@ build {
             "sudo chmod +x /usr/local/bin/docker-compose",
             "sudo systemctl enable docker.service",
             "sudo systemctl enable containerd.service",
-            "sudo echo 'AllowUsers potteradmin' >> /etc/ssh/sshd_config",
-            "sudo echo 'PermitRootLogin no' >> /etc/ssh/sshd_config",
-            "sudo systemctl restart sshd",
             "sudo localectl set-keymap hu"
         ]
     }
