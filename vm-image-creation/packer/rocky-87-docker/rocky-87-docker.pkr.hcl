@@ -138,7 +138,6 @@ build {
         inline = [
             "sudo yum install -y wget qemu-guest-agent cloud-utils-growpart gdisk",
             "sudo shred -u /etc/ssh/*_key /etc/ssh/*_key.pub",
-            "sudo unset HISTFILE; rm -rf /home/*/.*history /root/.*history",
             "sudo rm -f /root/*ks",
             "sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo",
             "sudo dnf -y install docker-ce docker-ce-cli containerd.io",
