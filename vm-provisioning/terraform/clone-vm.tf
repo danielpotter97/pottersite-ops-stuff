@@ -39,7 +39,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     onboot = true 
 
     # VM OS Settings
-    clone = "pottersite-template01"
+    clone = "rocky87-template01"
 
     os_type = "cloud-init"
 
