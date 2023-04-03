@@ -137,6 +137,8 @@ build {
     provisioner "shell" {
         inline = [
             "sudo yum install -y wget qemu-guest-agent cloud-utils-growpart gdisk",
+            "sudo shred -u /etc/ssh/*_key /etc/ssh/*_key.pub",
+            "sudo rm -f /root/*ks",
             "sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo",
             "sudo dnf -y install docker-ce docker-ce-cli containerd.io",
             "sudo curl -L 'https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)' -o /usr/local/bin/docker-compose",
