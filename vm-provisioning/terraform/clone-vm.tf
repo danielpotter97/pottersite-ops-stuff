@@ -66,7 +66,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
 
     disk {
         size            = "50G"
-        type            = "virtio"
+        type            = "scsi"
         storage         = "local-lvm"
     }
     # VM Cloud-Init Settings
