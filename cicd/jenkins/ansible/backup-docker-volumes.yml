@@ -6,7 +6,7 @@
   tasks:
     - name: compress all the files in tar.gz
       archive:
-        path: "/gluster/volume"
+        path: "/mnt/glusterfs/volume"
         dest: "/tmp/backup-{{ inventory_hostname }}-{{ date }}.tar.gz"
         format: gz
 
