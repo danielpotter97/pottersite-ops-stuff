@@ -56,7 +56,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     memory = var.memory
 
     scsihw  = "virtio-scsi-pci"
-    bootdisk = "scsi0"
+    bootdisk = "virtio0"
 
 
     network {
@@ -66,7 +66,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
 
     disk {
         size            = "50G"
-        type            = "scsi"
+        type            = "virtio"
         storage         = "local-lvm"
     }
     # VM Cloud-Init Settings
