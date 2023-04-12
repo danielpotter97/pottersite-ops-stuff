@@ -56,7 +56,7 @@ resource "proxmox_vm_qemu" "proxmox_vm"  {
     memory = var.memory
 
     scsihw  = "virtio-scsi-pci"
-    bootdisk = "virtio0"
+    bootdisk = "scsi0"
 
 
     network {
