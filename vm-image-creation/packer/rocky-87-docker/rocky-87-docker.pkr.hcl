@@ -63,7 +63,7 @@ source "proxmox" "rocky87-template01" {
         format = "raw"
         storage_pool = "local-lvm"
         storage_pool_type = "lvm"
-        type = "virtio"
+        type = "scsi"
     }
 
     # VM CPU Settings
