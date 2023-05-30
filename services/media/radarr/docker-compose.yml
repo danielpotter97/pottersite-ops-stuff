@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/glusterfs/volume/radarr-config:/config
+      - /home/potteradmin/volume/radarr-config:/config
       - /mnt/datastore/personal/:/data
     ports:
       - 7878:7878

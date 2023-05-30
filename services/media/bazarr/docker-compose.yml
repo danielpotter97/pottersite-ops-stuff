@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - TZ=Europe/Budapest
     volumes:
-      - /mnt/glusterfs/volume/bazarr-config:/config
+      - /home/potteradmin/volume/bazarr-config:/config
       - /mnt/datastore/personal/media:/data/media #optional
     ports:
       - 6767:6767

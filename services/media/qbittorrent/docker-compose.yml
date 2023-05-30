@@ -15,7 +15,7 @@ services:
       - TZ=Europe/Budapest
       - WEBUI_PORT=8080
     volumes:
-      - /mnt/glusterfs/volume/qbittorrent-config:/config
+      - /home/potteradmin/volume/qbittorrent-config:/config
       - /mnt/datastore/personal/torrents:/downloads
     ports:
       - 8080:8080
