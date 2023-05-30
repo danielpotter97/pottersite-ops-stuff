@@ -1,6 +1,6 @@
 ---
 - name: mount module demo
-  hosts: all
+  hosts: docker-node
   become: true
   vars:
     mynfs: "192.168.0.106:/datastore"

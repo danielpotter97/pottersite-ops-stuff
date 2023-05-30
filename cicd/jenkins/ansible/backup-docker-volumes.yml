@@ -1,5 +1,5 @@
 - name: mount module demo
-  hosts: docker-swarm-leader
+  hosts: docker-node
   become: true
   vars:
     date: "{{ lookup('pipe', 'date +%Y%m%d-%H') }}"
