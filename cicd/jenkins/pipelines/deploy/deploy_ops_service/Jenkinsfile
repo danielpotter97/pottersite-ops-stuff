@@ -15,7 +15,7 @@ pipeline {
         
         stage('Deploy') {
             steps{
-                sh "docker-compose up -f ${path}/docker-compose.yml $params.service"
+                sh "docker-compose -f ${path}/docker-compose.yml $params.service up -d"
                 }
             }      
         
