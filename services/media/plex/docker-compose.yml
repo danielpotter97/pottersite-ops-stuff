@@ -10,7 +10,6 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /home/potteradmin/volume/plex:/config
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
     ports:
