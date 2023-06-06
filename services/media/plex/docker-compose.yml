@@ -11,8 +11,8 @@ services:
       - PLEX_CLAIM=claim-xxxxxxxxxxxx
       - ADVERTISE_IP=http://192.168.0.108:32400/
       - HOSTNAME=Plex
-      - PLEX_UID=${PUID}
-      - PLEX_GID=${PGID}
+      - PLEX_UID=1000
+      - PLEX_GID=1000
     volumes:
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
