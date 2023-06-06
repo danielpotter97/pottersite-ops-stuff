@@ -13,7 +13,7 @@ services:
     volumes:
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
-       -/home/potteradmin/plex/config:/config
+      - /home/potteradmin/plex/config:/config
     ports:
       - 32400:32400/tcp
       - 3005:3005/tcp
