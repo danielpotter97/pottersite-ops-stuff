@@ -9,7 +9,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - PLEX_CLAIM=
+      - PLEX_CLAIM=claim-xxxxxxxxxxxx
     volumes:
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
