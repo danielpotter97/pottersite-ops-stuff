@@ -2,22 +2,18 @@
 version: "3.2"
 services:
   plex:
-    image: linuxserver/plex:latest
+    image: lscr.io/linuxserver/plex:latest
     dns:
       - 1.0.0.1
       - 1.1.1.1
     environment:
-      - TZ=${TZ}
-      - PLEX_CLAIM=
-      - ADVERTISE_IP=http://192.168.0.108:32400/
-      - HOSTNAME=Plex
-      - PLEX_UID=1000
-      - PLEX_GID=1000
+      - PUID=1000
+      - PGID=1000
+      - PLEX_CLAIM= #optional
     volumes:
       - /mnt/datastore/personal/media/series:/data/tvshows
       - /mnt/datastore/personal/media/movies:/data/movies
-      - "${USERDIR}/docker/config/plex:/config"
-      - "${USERDIR}/docker/config/plex/transcode:/transcode"
+       -/home/potteradmin/plex/config:/config
     ports:
       - 32400:32400/tcp
       - 3005:3005/tcp
